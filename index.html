@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Francisco Fafian — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,900;1,900&family=Barlow:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#1a56ff;--blue-l:#4d7fff;--blue-d:#0a2ecc;
+  --cyan:#00d4ff;--white:#f0f0f0;--black:#060608;
+  --gray:#0d0d14;--gray2:#13131e;--gray3:#1e1e2e;--text-m:#7070a0;
+  --fs-hero:clamp(60px,12vw,140px);--fs-big:clamp(40px,7vw,90px);
+  --fs-label:clamp(10px,1.2vw,12px);
+}
+html{scroll-behavior:smooth;background:var(--black)}
+body{font-family:'Barlow',sans-serif;color:var(--white);overflow-x:hidden}
+#progress{position:fixed;top:0;left:0;right:0;height:2px;z-index:999;background:var(--gray3)}
+#pf{height:100%;width:0%;background:linear-gradient(to right,var(--blue),var(--cyan));transition:width .1s linear}
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  padding:20px clamp(16px,4vw,48px);
+  display:flex;align-items:center;justify-content:space-between;
+  transition:background .4s;
+}
+nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(26,86,255,.12)}
+.nav-logo{
+  font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.15em;
+  color:var(--white);text-decoration:none;display:flex;align-items:center;gap:8px;
+}
+.nav-logo::before{content:'';width:20px;height:1px;background:var(--blue)}
+.nav-logo span{color:var(--blue)}
+.nav-links{display:flex;gap:clamp(16px,3vw,32px);list-style:none}
+.nav-links a{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-m);text-decoration:none;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--white)}
+@media(max-width:600px){.nav-links{gap:16px}.nav-links a{font-size:10px}}
+.sec-label{
+  font-family:'Space Mono',monospace;font-size:11px;
+  letter-spacing:.3em;color:var(--blue);text-transform:uppercase;
+  display:flex;align-items:center;gap:12px;
+}
+.sec-label::before{content:'';width:32px;height:1px;background:var(--blue)}
+.fu{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.fu.on{opacity:1;transform:translateY(0)}
+.tag{
+  font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--text-m);background:var(--gray2);padding:5px 10px;
+  border:1px solid rgba(255,255,255,.06);
+}
+
+/* HERO */
+#hero{
+  min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0 clamp(16px,4vw,48px) clamp(40px,6vw,80px);
+  position:relative;overflow:hidden;
+}
+.h-blob{position:absolute;border-radius:50%;pointer-events:none;z-index:1;
+  background:radial-gradient(circle,rgba(26,86,255,.18) 0%,transparent 70%);
+  width:clamp(300px,60vw,800px);height:clamp(300px,60vw,800px);top:-20%;right:-10%}
+.h-blob2{position:absolute;border-radius:50%;pointer-events:none;z-index:1;
+  background:radial-gradient(circle,rgba(123,47,255,.13) 0%,transparent 70%);
+  width:clamp(200px,40vw,500px);height:clamp(200px,40vw,500px);bottom:0;left:20%}
+.h-grid{position:absolute;inset:0;pointer-events:none;z-index:2;
+  background-image:linear-gradient(rgba(26,86,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(26,86,255,.04) 1px,transparent 1px);
+  background-size:80px 80px}
+.h-scan{position:absolute;inset:0;pointer-events:none;z-index:3;
+  background:repeating-linear-gradient(0deg,transparent 0 3px,rgba(0,0,0,.07) 3px 4px)}
+.h-counter{
+  position:absolute;top:clamp(80px,12vh,140px);right:clamp(16px,4vw,48px);
+  font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;
+  color:var(--text-m);text-align:right;z-index:5;
+}
+.h-counter strong{display:block;font-family:'Barlow Condensed',sans-serif;
+  font-size:clamp(48px,8vw,80px);font-weight:900;
+  color:transparent;-webkit-text-stroke:1px rgba(26,86,255,.25);line-height:1}
+.h-content{position:relative;z-index:5}
+.h-tag{font-family:'Space Mono',monospace;font-size:var(--fs-label);
+  letter-spacing:.3em;color:var(--blue);text-transform:uppercase;
+  margin-bottom:clamp(8px,2vw,20px);display:flex;align-items:center;gap:12px}
+.h-tag::before{content:'';width:32px;height:1px;background:var(--blue)}
+.h-name{font-family:'Barlow Condensed',sans-serif;
+  font-size:var(--fs-hero);font-weight:900;line-height:.88;text-transform:uppercase;letter-spacing:-.02em}
+.h-name .out{-webkit-text-stroke:2px var(--white);color:transparent}
+.h-name .bl{color:var(--blue)}
+.h-bottom{margin-top:clamp(24px,4vw,48px);display:flex;align-items:flex-end;
+  justify-content:space-between;flex-wrap:wrap;gap:24px}
+.h-desc{font-size:clamp(13px,1.5vw,16px);line-height:1.7;color:var(--text-m);max-width:400px}
+.h-scroll{display:flex;flex-direction:column;align-items:center;gap:8px;
+  font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.25em;
+  color:var(--text-m);text-transform:uppercase}
+.s-line{width:1px;height:60px;background:linear-gradient(to bottom,var(--blue),transparent);
+  animation:sdown 1.8s ease-in-out infinite}
+@keyframes sdown{0%,100%{opacity:.3;transform:scaleY(.5);transform-origin:top}50%{opacity:1;transform:scaleY(1)}}
+/* INDEX */
+#works-index{padding:clamp(80px,12vw,160px) clamp(16px,4vw,48px);border-top:1px solid var(--gray3)}
+.idx-heading{font-family:'Barlow Condensed',sans-serif;font-size:var(--fs-big);
+  font-weight:900;text-transform:uppercase;line-height:.9;color:var(--white);
+  margin-top:12px;margin-bottom:clamp(40px,6vw,80px)}
+.idx-row{
+  display:grid;grid-template-columns:48px 1fr auto auto;
+  align-items:center;padding:clamp(16px,2.5vw,28px) 0;
+  border-bottom:1px solid var(--gray3);gap:24px;
+  text-decoration:none;color:inherit;transition:all .3s;
+}
+.idx-row:hover .ir-t{color:var(--blue)}
+.idx-row:hover .ir-n{-webkit-text-stroke-color:var(--blue)}
+.idx-row:hover .ir-a{transform:translateX(6px);color:var(--blue)}
+.idx-row:hover{border-bottom-color:rgba(26,86,255,.3)}
+.ir-n{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:900;
+  color:transparent;-webkit-text-stroke:1px rgba(240,240,240,.2);
+  transition:-webkit-text-stroke-color .3s}
+.ir-t{font-family:'Barlow Condensed',sans-serif;font-size:clamp(22px,3vw,32px);
+  font-weight:700;text-transform:uppercase;letter-spacing:.02em;transition:color .3s}
+.ir-type{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-m);white-space:nowrap}
+.ir-a{font-size:18px;color:var(--text-m);transition:transform .3s,color .3s}
+@media(max-width:540px){.idx-row{grid-template-columns:32px 1fr auto}.ir-type{display:none}}
+/* CONTACT */
+#contact{padding:clamp(80px,12vw,160px) clamp(16px,4vw,48px);border-top:1px solid var(--gray3);position:relative;overflow:hidden}
+#contact::before{content:'CONTACT';position:absolute;bottom:-.15em;left:-.05em;
+  font-family:'Barlow Condensed',sans-serif;font-size:clamp(100px,18vw,240px);font-weight:900;
+  color:transparent;-webkit-text-stroke:1px rgba(26,86,255,.05);line-height:1;pointer-events:none}
+.ct-in{position:relative;z-index:2;max-width:800px}
+.ct-big{font-family:'Barlow Condensed',sans-serif;font-size:var(--fs-big);font-weight:900;
+  text-transform:uppercase;line-height:.9;margin-top:16px;margin-bottom:clamp(32px,5vw,60px)}
+.ct-big .out{-webkit-text-stroke:2px var(--white);color:transparent}
+.ct-big .bl{color:var(--blue)}
+.ct-links{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:56px}
+.ct-link{font-family:'Space Mono',monospace;font-size:clamp(11px,1.1vw,13px);
+  letter-spacing:.15em;color:var(--text-m);text-decoration:none;
+  border:1px solid var(--gray3);padding:12px 20px;
+  display:flex;align-items:center;gap:10px;transition:all .3s}
+.ct-link:hover{color:var(--white);border-color:var(--blue);background:rgba(26,86,255,.06)}
+.ct-link span{color:var(--blue)}
+.ft{display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:12px;border-top:1px solid var(--gray3);padding-top:24px}
+.ft-c{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.15em;color:rgba(112,112,160,.35)}
+</style>
+</head>
+<body>
+
+<div id="progress"><div id="pf"></div></div>
+<nav id="nav">
+  <a class="nav-logo" href="index.html">DISEÑO<span>.</span>MULTIMEDIA</a>
+  <ul class="nav-links"><li><a href="index.html#contact" class="active">Contacto</a></li><li><a href="work-cosmos.html">Cosmos</a></li><li><a href="work-strokes.html">The Strokes</a></li></ul>
+</nav>
+<section id="hero">
+  <div class="h-blob"></div><div class="h-blob2"></div>
+  <div class="h-grid"></div><div class="h-scan"></div>
+  <div class="h-counter">PORTFOLIO<strong>25</strong></div>
+  <div class="h-content">
+    <div class="h-tag">Diseño Multimedia</div>
+    <div class="h-name">
+      <div>Francisco</div>
+      <div class="out">Fafian</div>
+      <div class="bl">.</div>
+    </div>
+    <div class="h-bottom">
+      <p class="h-desc">Diseñador multimedia especializado en identidad y comunicación visual. Buenos Aires, Argentina.</p>
+      <div class="h-scroll"><div class="s-line"></div>Scroll</div>
+    </div>
+  </div>
+</section>
+<section id="works-index">
+  <div class="sec-label fu">Selección de trabajos</div>
+  <div class="idx-heading fu">OBRAS</div>
+  <a class="idx-row fu" href="work-cosmos.html">
+    <span class="ir-n">01</span>
+    <span class="ir-t">Identidad Visual</span>
+    <span class="ir-type">Branding / Etiqueta</span>
+    <span class="ir-a">→</span>
+  </a>
+  <a class="idx-row fu" href="work-strokes.html">
+    <span class="ir-n">02</span>
+    <span class="ir-t">Afiche</span>
+    <span class="ir-type">Poster Editorial</span>
+    <span class="ir-a">→</span>
+  </a>
+  <a class="idx-row fu" href="#">
+    <span class="ir-n">03</span>
+    <span class="ir-t">Diseño Web</span>
+    <span class="ir-type">UI / Digital</span>
+    <span class="ir-a" style="opacity:.3">→</span>
+  </a>
+</section>
+<section id="contact">
+  <div class="ct-in">
+    <div class="sec-label fu">Hablemos</div>
+    <div class="ct-big fu"><div>GET IN</div><div class="out">TOUCH</div><div class="bl">.</div></div>
+    <div class="ct-links fu">
+      <a class="ct-link" href="mailto:francisco@email.com"><span>✉</span> francisco@email.com</a>
+      <a class="ct-link" href="#" target="_blank"><span>in</span> LinkedIn</a>
+      <a class="ct-link" href="#" target="_blank"><span>@</span> Instagram</a>
+      <a class="ct-link" href="#" target="_blank"><span>↗</span> Behance</a>
+    </div>
+    <div class="ft">
+      <span class="ft-c">© 2025 Francisco Fafian — Portfolio</span>
+      <span class="ft-c">Buenos Aires, Argentina</span>
+    </div>
+  </div>
+</section>
+<script>
+const pf=document.getElementById('pf'),nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{
+  const p=window.scrollY/(document.body.scrollHeight-window.innerHeight);
+  pf.style.width=(p*100)+'%';
+  nav.classList.toggle('sc',window.scrollY>60);
+},{passive:true});
+document.querySelectorAll('.fu').forEach(el=>
+  new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on')})},{threshold:.1}).observe(el)
+);
+</script>
+</body></html>
