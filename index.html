@@ -50,11 +50,42 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
 }
 
 /* HERO */
-#hero{
-  min-height:100vh; display:flex; flex-direction:column; justify-content:center;
-  padding:0 40px;
-  position:relative;overflow:hidden; box-sizing: border-box;
+/* --- SECCIÓN HERO (REEMPLAZÁ TODO TU BLOQUE .HERO ACTUAL POR ESTE) --- */
+
+/* 1. Así se va a ver en la Computadora */
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* ← CAMBIADO: De 'space-between' a 'center' para centrar tu presentación verticalmente */
+  min-height: 100vh;
+  padding: var(--nav-height) var(--margin-m) var(--margin-m) var(--margin-m);
+  box-sizing: border-box;
 }
+
+/* 2. Así se va a ver en el Celular (AFUERA de la clase .hero, sin anidar) */
+@media (max-width: 768px) {
+  .hero {
+    /* Le sumamos un extra de espacio al tope para que tu nombre no se pegue al logo del header */
+    padding-top: calc(var(--nav-height) + 60px); 
+    padding-bottom: var(--margin-s);
+    padding-left: var(--margin-s);
+    padding-right: var(--margin-s);
+    justify-content: center; /* Mantiene el contenido centrado en la pantalla del celu */
+  }
+
+  /* Separamos tu nombre del texto explicativo */
+  .hero h1 {
+    margin-bottom: 24px; 
+    line-height: 1.1; /* Evita que si el nombre ocupa dos renglones se pisen las letras */
+  }
+
+  /* Separamos el texto explicativo de los links de contacto de abajo */
+  .hero p {
+    margin-bottom: 40px; 
+    line-height: 1.5; /* Le da más aire a los renglones para que sea cómodo de leer */
+  }
+}  
+  
 .h-blob{position:absolute;border-radius:50%;pointer-events:none;z-index:1;
   background:radial-gradient(circle,rgba(26,86,255,.18) 0%,transparent 70%);
   width:clamp(300px,60vw,800px);height:clamp(300px,60vw,800px);top:-20%;right:-10%}
@@ -114,25 +145,7 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   font-weight:700;text-transform:uppercase;letter-spacing:.02em;transition:color .3s}
 .ir-type{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-m);white-space:nowrap; margin-left:20px;}
 .ir-a{font-size:18px;color:var(--text-m);transition:transform .3s,color .3s}
-/* --- SECCIÓN HERO (Presentación) --- */
-
-/* 2. Así se ve en el Celular (Más separado y con aire) */
-@media (max-width: 768px) {
-  .hero {
-    padding: 120px 20px 60px 20px; /* Le da mucho aire arriba para que no pegue con el logo */
-    justify-content: flex-start; /* En el celu lo tiramos un poco más arriba para que se lea mejor */
-  }
-
-  .hero h1 {
-    margin-bottom: 20px; /* Separa tu nombre del texto de abajo */
-    line-height: 1.1;
-  }
-
-  .hero p {
-    margin-bottom: 40px; /* Separa tu texto de los links de contacto */
-    line-height: 1.5;
-  }
-}
+  
 /* CONTACT */
 #contact{padding:clamp(80px,12vw,160px) clamp(16px,4vw,48px);border-top:1px solid var(--gray3);position:relative;overflow:hidden}
 #contact::before{content:'CONTACT';position:absolute;bottom:-.15em;left:-.05em;
