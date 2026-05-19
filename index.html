@@ -50,39 +50,6 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
 }
 
 /* HERO */
-/* --- SECCIÓN HERO CORREGIDA --- */
-
-/* 1. Computadora */
-.hero {
-  display: flex;
-  flex-direction: column;
-  justify-content: center; 
-  min-height: 100vh;
-  padding: 0 40px; /* Medidas reales, sin variables */
-  box-sizing: border-box;
-}
-
-/* 2. Celular */
-@media (max-width: 768px) {
-  .hero {
-    padding-top: 120px; /* Medida real para que no choque con el header */
-    padding-bottom: 40px;
-    padding-left: 20px;
-    padding-right: 20px;
-    justify-content: center;
-  }
-
-  .hero h1 {
-    margin-bottom: 24px; 
-    line-height: 1.1;
-  }
-
-  .hero p {
-    margin-bottom: 40px; 
-    line-height: 1.5;
-  }
-}  
-  
 .h-blob{position:absolute;border-radius:50%;pointer-events:none;z-index:1;
   background:radial-gradient(circle,rgba(26,86,255,.18) 0%,transparent 70%);
   width:clamp(300px,60vw,800px);height:clamp(300px,60vw,800px);top:-20%;right:-10%}
@@ -163,6 +130,37 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
 .ft{display:flex;justify-content:space-between;align-items:center;
   flex-wrap:wrap;gap:12px;border-top:1px solid var(--gray3);padding-top:24px}
 .ft-c{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.15em;color:rgba(112,112,160,.35)}
+
+/* --- HERO DEFINITIVO (FORZADO) --- */
+.hero {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important; 
+  min-height: 100vh !important;
+  padding: 0 40px !important;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 120px !important; 
+    padding-bottom: 40px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    justify-content: center !important;
+  }
+
+  .hero h1 {
+    margin-bottom: 24px !important; 
+    line-height: 1.1 !important;
+  }
+
+  .hero p {
+    margin-bottom: 40px !important; 
+    line-height: 1.5 !important;
+  }
+}
+
 </style>
 </head>
 <body>
