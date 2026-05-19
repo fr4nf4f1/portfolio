@@ -63,7 +63,7 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
 .h-scan{position:absolute;inset:0;pointer-events:none;z-index:3;
   background:repeating-linear-gradient(0deg,transparent 0 3px,rgba(0,0,0,.07) 3px 4px)}
 .h-counter{
-  position:absolute;top:clamp(80px,12vh,140px);left:clamp(16px,4vw,48px);
+  position: absolute; top:clamp(80px,12vh,140px); right:clamp(16px,4vw,48px);
   font-family:'Space Mono',monospace;font-size:17px;letter-spacing:.2em;
   color:var(--text-m);text-align:right;z-index:5;
 }
@@ -132,13 +132,14 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   display:flex;
   flex-direction:row;
   align-items:center;
-  justify-content:space-between;
-  gap:40px;
+  justify-content:center;
+  gap:clamp(32px,6vw,80px);
   padding:100px clamp(16px,4vw,48px) clamp(40px,6vw,80px);
   position:relative;overflow:hidden;
 }
 @media(max-width:768px){
   #hero{flex-direction:column;justify-content:center;padding-top:120px}
+  .h-photo-wrap{width:min(260px,70vw);}
 }
 
 /* NUEVO: Ajustes para que respire en celulares */
@@ -159,11 +160,11 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
 /* FOTO CON GLITCH Y REVEAL */
 .h-photo-wrap{
   position:relative;
-  width:min(380px, 90vw);
+  width:min(340px, 38vw);
   aspect-ratio:0.62;
   overflow:hidden;
   flex-shrink:0;
-  margin-right: clamp(16px, 4vw, 60px);
+  margin:0 auto;
 }
 .h-photo{
   width:100%;height:100%;
