@@ -50,39 +50,36 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
 }
 
 /* HERO */
-/* --- SECCIÓN HERO (REEMPLAZÁ TODO TU BLOQUE .HERO ACTUAL POR ESTE) --- */
+/* --- SECCIÓN HERO CORREGIDA --- */
 
-/* 1. Así se va a ver en la Computadora */
+/* 1. Computadora */
 .hero {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* ← CAMBIADO: De 'space-between' a 'center' para centrar tu presentación verticalmente */
+  justify-content: center; 
   min-height: 100vh;
-  padding: var(--nav-height) var(--margin-m) var(--margin-m) var(--margin-m);
+  padding: 0 40px; /* Medidas reales, sin variables */
   box-sizing: border-box;
 }
 
-/* 2. Así se va a ver en el Celular (AFUERA de la clase .hero, sin anidar) */
+/* 2. Celular */
 @media (max-width: 768px) {
   .hero {
-    /* Le sumamos un extra de espacio al tope para que tu nombre no se pegue al logo del header */
-    padding-top: calc(var(--nav-height) + 60px); 
-    padding-bottom: var(--margin-s);
-    padding-left: var(--margin-s);
-    padding-right: var(--margin-s);
-    justify-content: center; /* Mantiene el contenido centrado en la pantalla del celu */
+    padding-top: 120px; /* Medida real para que no choque con el header */
+    padding-bottom: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    justify-content: center;
   }
 
-  /* Separamos tu nombre del texto explicativo */
   .hero h1 {
     margin-bottom: 24px; 
-    line-height: 1.1; /* Evita que si el nombre ocupa dos renglones se pisen las letras */
+    line-height: 1.1;
   }
 
-  /* Separamos el texto explicativo de los links de contacto de abajo */
   .hero p {
     margin-bottom: 40px; 
-    line-height: 1.5; /* Le da más aire a los renglones para que sea cómodo de leer */
+    line-height: 1.5;
   }
 }  
   
