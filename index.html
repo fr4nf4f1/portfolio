@@ -327,9 +327,11 @@ document.querySelectorAll('.fu').forEach(el=>
   const wrap = canvas.parentElement;
 
 function resize(){
-  const rect = wrap.getBoundingClientRect();
-  canvas.width  = rect.width;
-  canvas.height = rect.height;
+  const w = wrap.offsetWidth;
+  const h = wrap.offsetHeight;
+  if(w === 0 || h === 0) return;
+  canvas.width  = w;
+  canvas.height = h;
   const ctx = canvas.getContext('2d');
   ctx.fillStyle = 'rgba(6,6,8,1)';
   ctx.fillRect(0,0,canvas.width,canvas.height);
@@ -350,10 +352,10 @@ function resize(){
   }
 
 resize();
-window.addEventListener('resize', resize);
-setTimeout(resize, 50);
-setTimeout(resize, 300);
-setTimeout(resize, 800);
+setTimeout(resize, 100);
+setTimeout(resize, 500);
+setTimeout(resize, 1200);
+window.addEventListener('resize', ()=>{ setTimeout(resize, 100); });
 
   let painting=false, revealedPct=0;
   const BRUSH=60;
@@ -396,8 +398,6 @@ setTimeout(resize, 800);
   canvas.addEventListener('mousemove',e=>{reveal(e)});
   canvas.addEventListener('touchstart',e=>{reveal(e);e.preventDefault()},{passive:false});
   canvas.addEventListener('touchmove',e=>{reveal(e);e.preventDefault()},{passive:false});
-  canvas.addEventListener('touchstart',e=>{painting=true;reveal(e);e.preventDefault()},{passive:false});
-  canvas.addEventListener('touchmove',e=>{if(painting){reveal(e);e.preventDefault()}},{passive:false});
   canvas.addEventListener('touchend',()=>painting=false);
 })();
   
