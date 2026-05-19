@@ -114,7 +114,25 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   font-weight:700;text-transform:uppercase;letter-spacing:.02em;transition:color .3s}
 .ir-type{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-m);white-space:nowrap; margin-left:20px;}
 .ir-a{font-size:18px;color:var(--text-m);transition:transform .3s,color .3s}
-@media(max-width:540px){.idx-row{grid-template-columns:32px 1fr auto}.ir-type{display:none}}
+/* --- SECCIÓN HERO (Presentación) --- */
+
+/* 2. Así se ve en el Celular (Más separado y con aire) */
+@media (max-width: 768px) {
+  .hero {
+    padding: 120px 20px 60px 20px; /* Le da mucho aire arriba para que no pegue con el logo */
+    justify-content: flex-start; /* En el celu lo tiramos un poco más arriba para que se lea mejor */
+  }
+
+  .hero h1 {
+    margin-bottom: 20px; /* Separa tu nombre del texto de abajo */
+    line-height: 1.1;
+  }
+
+  .hero p {
+    margin-bottom: 40px; /* Separa tu texto de los links de contacto */
+    line-height: 1.5;
+  }
+}
 /* CONTACT */
 #contact{padding:clamp(80px,12vw,160px) clamp(16px,4vw,48px);border-top:1px solid var(--gray3);position:relative;overflow:hidden}
 #contact::before{content:'CONTACT';position:absolute;bottom:-.15em;left:-.05em;
