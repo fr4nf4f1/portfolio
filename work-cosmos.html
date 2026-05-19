@@ -210,6 +210,58 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   height: auto;
   object-fit: cover;
 }
+
+/* --- DISEÑO RESPONSIVE PARA SECCIÓN DE VINOS --- */
+
+/* Contenedor horizontal */
+.fila-vino {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+/* Cada una de las dos columnas (Frente / Mockup) */
+.columna-vino {
+  text-align: left;
+  flex: 0 1 auto;
+}
+
+/* Estilo del título indicador */
+.titulo-vino-etiqueta {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: var(--text-m);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+}
+
+/* Comportamiento de las imágenes en Computadora */
+.img-vino-dinamica {
+  height: 450px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* --- LA MAGIA PARA CELULARES --- */
+@media (max-width: 768px) {
+  .fila-vino {
+    gap: 30px; /* Reduce la separación de los bloques en el celu */
+  }
+  
+  .img-vino-dinamica {
+    height: auto !important; /* Rompe los 450px fijos del espacio vacío */
+    width: 100%;
+    max-width: 290px; /* Controla que la foto no se vuelva gigante en pantallas chicas */
+  }
+}
   
 </style>
 </head>
@@ -269,46 +321,46 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
     <p class="sub">Etiqueta Principal · Visualización del Producto</p>
 
     <!-- ORIÓN -->
-<div style="display: flex; flex-direction: row; align-items: flex-start; justify-content: center; gap: 40px; margin-top: 30px; flex-wrap: wrap; width: 100%;">
+<div class="fila-vino">
   
-  <div style="text-align: left; flex: 0 1 auto;">
-    <p style="font-family: 'Space Mono', monospace; font-size: 12px; color: var(--text-m); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px;">Orion - Frente</p>
-    <img src="etiqueta-1.jpg" alt="Orion Frente" style="height: 450px; width: auto; max-width: 100%; object-fit: contain; display: block;">
+  <div class="columna-vino">
+    <p class="titulo-vino-etiqueta">Orion - Frente</p>
+    <img src="etiqueta-1.jpg" alt="Orion Frente" class="img-vino-dinamica">
   </div>
   
-  <div style="text-align: left; flex: 0 1 auto;">
-    <p style="font-family: 'Space Mono', monospace; font-size: 12px; color: var(--text-m); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px;">Orion - Mockup</p>
-    <img src="mockup-etiqueta1.jpg" alt="Mockup Orion" style="height: 450px; width: auto; max-width: 100%; object-fit: contain; display: block;">
+  <div class="columna-vino">
+    <p class="titulo-vino-etiqueta">Orion - Mockup</p>
+    <img src="mockup-etiqueta1.jpg" alt="Mockup Orion" class="img-vino-dinamica">
   </div>
   
 </div>
 
     <!-- CASSIOPEA -->
-<div style="display: flex; flex-direction: row; align-items: flex-start; justify-content: center; gap: 40px; margin-top: 30px; flex-wrap: wrap; width: 100%;">
+<div class="fila-vino">
   
-  <div style="text-align: left; flex: 0 1 auto;">
-    <p style="font-family: 'Space Mono', monospace; font-size: 12px; color: var(--text-m); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px;">Cassiopeia - Frente</p>
-    <img src="etiqueta-2.jpg" alt="Cassiopeia Frente" style="height: 450px; width: auto; max-width: 100%; object-fit: contain; display: block;">
+  <div class="columna-vino">
+    <p class="titulo-vino-etiqueta">Cassiopeia - Frente</p>
+    <img src="etiqueta-2.jpg" alt="Cassiopeia Frente" class="img-vino-dinamica">
   </div>
   
-  <div style="text-align: left; flex: 0 1 auto;">
-    <p style="font-family: 'Space Mono', monospace; font-size: 12px; color: var(--text-m); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px;">Cassiopeia - Mockup</p>
-    <img src="mockup-etiqueta2.jpg" alt="Mockup Cassiopeia" style="height: 450px; width: auto; max-width: 100%; object-fit: contain; display: block;">
+  <div class="columna-vino">
+    <p class="titulo-vino-etiqueta">Cassiopeia - Mockup</p>
+    <img src="mockup-etiqueta2.jpg" alt="Mockup Cassiopeia" class="img-vino-dinamica">
   </div>
   
 </div>
 
     <!-- LYRA -->
-<div style="display: flex; flex-direction: row; align-items: flex-start; justify-content: center; gap: 40px; margin-top: 30px; flex-wrap: wrap; width: 100%;">
+<div class="fila-vino">
   
-  <div style="text-align: left; flex: 0 1 auto;">
-    <p style="font-family: 'Space Mono', monospace; font-size: 12px; color: var(--text-m); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px;">Lyra - Frente</p>
-    <img src="etiqueta-3.jpg" alt="Lyra Frente" style="height: 450px; width: auto; max-width: 100%; object-fit: contain; display: block;">
+  <div class="columna-vino">
+    <p class="titulo-vino-etiqueta">Lyra - Frente</p>
+    <img src="etiqueta-3.jpg" alt="Lyra Frente" class="img-vino-dinamica">
   </div>
   
-  <div style="text-align: left; flex: 0 1 auto;">
-    <p style="font-family: 'Space Mono', monospace; font-size: 12px; color: var(--text-m); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px;">Lyra - Mockup</p>
-    <img src="mockup-etiqueta3.jpg" alt="Mockup Lyra" style="height: 450px; width: auto; max-width: 100%; object-fit: contain; display: block;">
+  <div class="columna-vino">
+    <p class="titulo-vino-etiqueta">Lyra - Mockup</p>
+    <img src="mockup-etiqueta3.jpg" alt="Mockup Lyra" class="img-vino-dinamica">
   </div>
   
 </div>
