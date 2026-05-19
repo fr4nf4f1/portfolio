@@ -163,6 +163,7 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   aspect-ratio:0.62;
   overflow:hidden;
   flex-shrink:0;
+  margin-right: clamp(16px, 4vw, 60px);
 }
 .h-photo{
   width:100%;height:100%;
@@ -341,8 +342,7 @@ document.querySelectorAll('.fu').forEach(el=>
   resize();
   window.addEventListener('resize', resize);
 
-  let painting=false, revealedPct=0;
-  const BRUSH=60;
+ revealedPct=0; const BRUSH=60;
 
   function getPos(e){
     const r=canvas.getBoundingClientRect();
@@ -379,9 +379,9 @@ document.querySelectorAll('.fu').forEach(el=>
 
   canvas.addEventListener('mouseenter',()=>{if(hint)hint.style.opacity='0'});
   canvas.addEventListener('mouseleave',()=>{if(hint&&revealedPct<.6)hint.style.opacity='1'});
-  canvas.addEventListener('mousedown',e=>{painting=true;reveal(e)});
-  canvas.addEventListener('mousemove',e=>{if(painting)reveal(e)});
-  canvas.addEventListener('mouseup',()=>painting=false);
+  canvas.addEventListener('mousemove',e=>{reveal(e)});
+  canvas.addEventListener('touchstart',e=>{reveal(e);e.preventDefault()},{passive:false});
+  canvas.addEventListener('touchmove',e=>{reveal(e);e.preventDefault()},{passive:false});
   canvas.addEventListener('touchstart',e=>{painting=true;reveal(e);e.preventDefault()},{passive:false});
   canvas.addEventListener('touchmove',e=>{if(painting){reveal(e);e.preventDefault()}},{passive:false});
   canvas.addEventListener('touchend',()=>painting=false);
