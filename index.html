@@ -154,51 +154,6 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
     line-height: 1.8; /* Hace que tu texto de presentación sea más fácil de leer en mobile */
   }
 }
-
-/* --- ESTILOS DE LA FOTO INTERACTIVA --- */
-
-#portrait-interactive {
-  position: absolute;
-  right: 8%;       /* Lo ubicamos en el espacio vacío de la derecha */
-  top: 50%;        /* Lo centramos verticalmente */
-  transform: translateY(-50%);
-  width: clamp(280px, 25vw, 400px); /* Tamaño adaptable a la pantalla */
-  aspect-ratio: 3 / 4; /* Mantiene la proporción de retrato */
-  border-radius: 12px;
-  overflow: hidden;
-  z-index: 4;      /* Se asegura de estar arriba del fondo */
-}
-
-#portrait-interactive img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.p-nitida {
-  z-index: 1; /* La foto clara va abajo */
-}
-
-.p-borrosa {
-  z-index: 2; /* La borrosa va arriba tapando */
-  filter: blur(25px); /* Nivel de desenfoque inicial */
-  
-  /* Máscara que lo hace todo borroso al principio */
-  -webkit-mask-image: radial-gradient(circle at center, transparent 0%, black 0%);
-  mask-image: radial-gradient(circle at center, transparent 0%, black 0%);
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-}
-
-/* Lo ocultamos en celulares porque ahí no hay espacio vacío y el "raspar" con el dedo es complicado */
-@media(max-width: 900px){
-  #portrait-interactive {
-    display: none;
-  }
-}
   
 </style>
 </head>
@@ -223,11 +178,6 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
       <div class="h-scroll"><div class="s-line"></div>Scroll</div>
     </div>
   </div>
-
-<div id="portrait-interactive">
-  <img src="Foto.png" alt="Francisco Nitida" class="p-nitida">
-  <img src="Foto.png" alt="Francisco Borrosa" class="p-borrosa">
-</div>
   
 </section>
 <section id="works-index">
@@ -284,37 +234,6 @@ window.addEventListener('scroll',()=>{
 document.querySelectorAll('.fu').forEach(el=>
   new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on')})},{threshold:.1}).observe(el)
 );
-
-<script>
-// --- INTERACCIÓN FOTO: RASPA Y GANA ---
-const containerPhoto = document.getElementById('portrait-interactive');
-if (containerPhoto) {
-  const blurredImg = containerPhoto.querySelector('.p-borrosa');
-
-  containerPhoto.addEventListener('mousemove', (e) => {
-      const rect = containerPhoto.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-
-      const xPercent = (x / rect.width) * 100;
-      const yPercent = (y / rect.height) * 100;
-
-      // Tamaño del círculo nítido (ajustalo si lo querés más grande)
-      const revealRadius = 150; 
-
-      const maskStyle = `radial-gradient(circle at ${xPercent}% ${yPercent}%, transparent 0px, black ${revealRadius}px)`;
-      blurredImg.style.webkitMaskImage = maskStyle;
-      blurredImg.style.maskImage = maskStyle;
-  });
-
-  containerPhoto.addEventListener('mouseleave', () => {
-      // Vuelve a estar todo borroso al sacar el mouse
-      const resetMask = `radial-gradient(circle at 50% 50%, transparent 0%, black 0%)`;
-      blurredImg.style.webkitMaskImage = resetMask;
-      blurredImg.style.maskImage = resetMask;
-  });
-}
-</script>
   
 </script>
 </body></html>
