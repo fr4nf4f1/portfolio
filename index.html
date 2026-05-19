@@ -19,10 +19,11 @@ body{font-family:'Barlow',sans-serif;color:var(--white);overflow-x:hidden}
 #progress{position:fixed;top:0;left:0;right:0;height:2px;z-index:999;background:var(--gray3)}
 #pf{height:100%;width:0%;background:linear-gradient(to right,var(--blue),var(--cyan));transition:width .1s linear}
 nav{
-  position:fixed; top:0; left:0; right:0; width: 100%; z-index:999;
-  background-color: var(--black); padding:20px clamp(16px,4vw,48px);
+  position:fixed;top:0;left:0;right:0;z-index:999; /* Subimos el z-index por seguridad */
+  padding:20px clamp(16px,4vw,48px);
   display:flex;align-items:center;justify-content:space-between;
   transition:background .4s;
+  background: var(--black); /* NUEVO: Le damos fondo oscuro siempre para que tape el contenido de atrás */
 }
 nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(26,86,255,.12)}
 .nav-logo{
@@ -132,32 +133,25 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
 .ft-c{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.15em;color:rgba(112,112,160,.35)}
 
 /* --- HERO DEFINITIVO (FORZADO) --- */
-.hero {
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important; 
-  min-height: 100vh !important;
-  padding: 0 40px !important;
-  box-sizing: border-box !important;
+#hero{
+  min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+  /* CAMBIO ACA: Cambiamos el 0 por 100px para empujar el texto hacia el medio */
+  padding:100px clamp(16px,4vw,48px) clamp(40px,6vw,80px);
+  position:relative;overflow:hidden;
 }
 
-@media (max-width: 768px) {
-  .hero {
-    padding-top: 120px !important; 
-    padding-bottom: 40px !important;
-    padding-left: 20px !important;
-    padding-right: 20px !important;
-    justify-content: center !important;
+/* NUEVO: Ajustes para que respire en celulares */
+@media(max-width: 600px){
+  #hero {
+    padding-top: 140px; /* Le da más espacio arriba en celulares para separarlo del header */
   }
-
-  .hero h1 {
-    margin-bottom: 24px !important; 
-    line-height: 1.1 !important;
+  .h-bottom {
+    flex-direction: column; /* Apila el texto y el botón de scroll uno abajo del otro */
+    align-items: flex-start; /* Alinea todo a la izquierda */
+    gap: 40px; /* Genera una separación clara entre tu texto y el botón de scroll */
   }
-
-  .hero p {
-    margin-bottom: 40px !important; 
-    line-height: 1.5 !important;
+  .h-desc {
+    line-height: 1.8; /* Hace que tu texto de presentación sea más fácil de leer en mobile */
   }
 }
 
@@ -179,9 +173,8 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
     <div class="h-bottom">
       <p class="h-desc">Como diseñador me gusta experimentar, probar cosas que ayuden a bajar a tierra ideas que parecen imposibles; casi intangibles, en un trabajo visual que exprese
         las necesdidaes que busca transmitir el cliente. Mi nombre es Francisco y tengo 23 años, en mí vas a encontrar la solución a los problemas que se te presenten y juntos vamos a
-        poder resolverlos, generando una propuesta de comunicación para cada uno de ellos. Para tener estos resultados voy a estar siempre atento y abierto a la comunicación.
-        
-        Diseñador multimedia especializado en identidad y comunicación visual. Buenos Aires, Argentina.</p>
+        poder resolverlos, generando una propuesta de comunicación para cada uno de ellos. Para tener estos resultados voy a estar siempre atento y abierto a la comunicación. 
+      </p>
       <div class="h-scroll"><div class="s-line"></div>Scroll</div>
     </div>
   </div>
