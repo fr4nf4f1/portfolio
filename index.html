@@ -82,12 +82,7 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
 .h-bottom{margin-top:clamp(24px,4vw,48px);display:flex;align-items:flex-end;
   justify-content:space-between;flex-wrap:wrap;gap:24px}
 .h-desc{font-size:clamp(16px,1.5vw,16px);line-height:1.7;color:var(--text-m);max-width:400px}
-.h-scroll{display:flex;flex-direction:column;align-items:center;gap:8px;
-  font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.25em;
-  color:var(--text-m);text-transform:uppercase}
-.s-line{width:1px;height:60px;background:linear-gradient(to bottom,var(--blue),transparent);
-  animation:sdown 1.8s ease-in-out infinite}
-@keyframes sdown{0%,100%{opacity:.3;transform:scaleY(.5);transform-origin:top}50%{opacity:1;transform:scaleY(1)}}
+
 /* INDEX */
 #works-index{padding:clamp(80px,12vw,160px) clamp(16px,4vw,48px);border-top:1px solid var(--gray3)}
 .idx-heading{font-family:'Barlow Condensed',sans-serif;font-size:var(--fs-big);
@@ -169,6 +164,7 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   aspect-ratio:0.62;
   overflow:hidden;
   flex-shrink:0;
+  margin-right: clamp(16px, 4vw, 60px);
 }
 .h-photo{
   width:100%;height:100%;
@@ -246,7 +242,6 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
         las necesdidaes que busca transmitir el cliente. Mi nombre es Francisco y tengo 23 años, en mí vas a encontrar la solución a los problemas que se te presenten y juntos vamos a
         poder resolverlos, generando una propuesta de comunicación para cada uno de ellos. Para tener estos resultados voy a estar siempre atento y abierto a la comunicación. 
       </p>
-      <div class="h-scroll"><div class="s-line"></div>Scroll</div>
     </div>
   </div>
 
@@ -258,7 +253,7 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
     <div class="glitch-layer" style="background-image:url('Foto.png')"></div>
   </div>
   <canvas id="reveal-canvas"></canvas>
-  <div class="photo-hint" id="photo-hint">Pasá el mouse →</div>
+  <div class="photo-hint" id="photo-hint">Raspa y descubrí quién soy</div>
 </div>
   
 </section>
@@ -386,9 +381,9 @@ document.querySelectorAll('.fu').forEach(el=>
 
   canvas.addEventListener('mouseenter',()=>{if(hint)hint.style.opacity='0'});
   canvas.addEventListener('mouseleave',()=>{if(hint&&revealedPct<.6)hint.style.opacity='1'});
-  canvas.addEventListener('mousedown',e=>{painting=true;reveal(e)});
-  canvas.addEventListener('mousemove',e=>{if(painting)reveal(e)});
-  canvas.addEventListener('mouseup',()=>painting=false);
+  canvas.addEventListener('mousemove',e=>{reveal(e)});
+  canvas.addEventListener('touchstart',e=>{reveal(e);e.preventDefault()},{passive:false});
+  canvas.addEventListener('touchmove',e=>{reveal(e);e.preventDefault()},{passive:false});
   canvas.addEventListener('touchstart',e=>{painting=true;reveal(e);e.preventDefault()},{passive:false});
   canvas.addEventListener('touchmove',e=>{if(painting){reveal(e);e.preventDefault()}},{passive:false});
   canvas.addEventListener('touchend',()=>painting=false);
