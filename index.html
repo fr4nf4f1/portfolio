@@ -20,7 +20,7 @@ body{font-family:'Barlow',sans-serif;color:var(--white);overflow-x:hidden}
 #pf{height:100%;width:0%;background:linear-gradient(to right,var(--blue),var(--cyan));transition:width .1s linear}
 nav{
   position:fixed;top:0;left:0;right:0;z-index:999; /* Subimos el z-index por seguridad */
-  padding:20px clamp(40px,4vw,48px);
+  padding:20px clamp(100px,4vw,48px);
   display:flex;align-items:center;justify-content:space-between;
   transition:background .4s;
   background: var(--black); /* NUEVO: Le damos fondo oscuro siempre para que tape el contenido de atrás */
@@ -63,7 +63,7 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
 .h-scan{position:absolute;inset:0;pointer-events:none;z-index:3;
   background:repeating-linear-gradient(0deg,transparent 0 3px,rgba(0,0,0,.07) 3px 4px)}
 .h-counter{
-  position: absolute; top:clamp(80px,12vh,140px); right:clamp(40px,4vw,48px);
+  position: absolute; top:clamp(80px,12vh,140px); right:clamp(100px,4vw,48px);
   font-family:'Space Mono',monospace;font-size:17px;letter-spacing:.2em;
   color:var(--text-m);text-align:right;z-index:5;
 }
@@ -79,12 +79,12 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   font-size:var(--fs-hero);font-weight:900;line-height:.88;text-transform:uppercase;letter-spacing:-.02em}
 .h-name .out{-webkit-text-stroke:2px var(--white);color:transparent}
 .h-name .bl{color:var(--blue)}
-.h-bottom{margin-top:clamp(40px,4vw,48px);display:flex;align-items:flex-end;
+.h-bottom{margin-top:clamp(100px,4vw,48px);display:flex;align-items:flex-end;
   justify-content:space-between;flex-wrap:wrap;gap:24px}
 .h-desc{font-size:clamp(16px,1.5vw,16px);line-height:1.7;color:var(--text-m);max-width:400px}
 
 /* INDEX */
-#works-index{padding:clamp(80px,12vw,160px) clamp(40px,4vw,48px);border-top:1px solid var(--gray3)}
+#works-index{padding:clamp(80px,12vw,160px) clamp(100px,4vw,48px);border-top:1px solid var(--gray3)}
 .idx-heading{font-family:'Barlow Condensed',sans-serif;font-size:var(--fs-big);
   font-weight:900;text-transform:uppercase;line-height:.9;color:var(--white);
   margin-top:12px;margin-bottom:clamp(40px,6vw,80px)}
@@ -108,7 +108,7 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
 .ir-a{font-size:18px;color:var(--text-m);transition:transform .3s,color .3s}
   
 /* CONTACT */
-#contact{padding:clamp(80px,12vw,160px) clamp(40px,4vw,48px);border-top:1px solid var(--gray3);position:relative;overflow:hidden}
+#contact{padding:clamp(80px,12vw,160px) clamp(100px,4vw,48px);border-top:1px solid var(--gray3);position:relative;overflow:hidden}
 #contact::before{content:'CONTACT';position:absolute;bottom:-.15em;left:-.05em;
   font-family:'Barlow Condensed',sans-serif;font-size:clamp(100px,18vw,240px);font-weight:900;
   color:transparent;-webkit-text-stroke:1px rgba(26,86,255,.05);line-height:1;pointer-events:none}
@@ -135,7 +135,7 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   align-items:center;
   justify-content:center;
   gap:clamp(32px,6vw,80px);
-  padding:100px clamp(40px,4vw,48px) clamp(40px,6vw,80px);
+  padding:100px clamp(100px,4vw,48px) clamp(40px,6vw,80px);
   position:relative;overflow:hidden;
 }
 @media(max-width:768px){
