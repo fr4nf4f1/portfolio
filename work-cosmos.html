@@ -263,46 +263,7 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   }
 }
 
-/* CARRUSEL */
-.carousel-controls{
-  display:flex;gap:12px;margin-bottom:24px;flex-wrap:wrap;
-}
-.cc-btn{
-  font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--text-m);
-  background:none;border:1px solid var(--gray3);padding:8px 16px;
-  cursor:pointer;transition:all .3s;
-}
-.cc-btn.active,.cc-btn:hover{
-  color:var(--white);border-color:var(--blue);background:rgba(26,86,255,.08);
-}
-.carousel-slide{
-  position:absolute;inset:0;
-  opacity:0;pointer-events:none;
-  transition:opacity .5s ease;
-}
-.carousel-slide.active{
-  opacity:1;pointer-events:auto;
-}
-.slide-inner{
-  width:100%;height:100%;
-  display:grid;grid-template-columns:1fr 1fr;
-  align-items:center;gap:16px;
-  padding:clamp(16px,3vw,40px);
-}
-.slide-label{
-  width:100%;max-height:75vh;
-  object-fit:contain;display:block;
-}
-.slide-video{
-  width:100%;max-height:75vh;
-  object-fit:contain;display:block;
-  border-radius:2px;
-}
-@media(max-width:768px){
-  .slide-inner{grid-template-columns:1fr;grid-template-rows:1fr 1fr}
-  .slide-label,.slide-video{max-height:35vh}
-}
+
   
 </style>
 </head>
@@ -332,53 +293,79 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
 
 <div class="work-page">
 <div class="w-hero">
-  <div class="ip" data-n="01">
-    <div class="ip-in">
-      <div class="w-idx">01 / 02</div>
-      <span class="w-type">Branding / Identidad</span>
-      <h2 class="w-title">COSMOS<br><span class="l2">VINOS</span></h2>
-      <p class="w-desc">Sistema de etiquetas para una bodega ficticia inspirada en constelaciones. Cada vino lleva el nombre de una constelación y su paleta es consecuente con ella.</p>
-      <div class="w-tags">
-        <span class="tag">Illustrator</span>
-        <span class="tag">Identidad</span>
-        <span class="tag">Tipografía</span>
-        <span class="tag">Packaging</span>
+    <div class="ip" data-n="01">
+      <div class="ip-in">
+        <div class="w-idx">01 / 02</div>
+        <span class="w-type">Branding / Identidad</span>
+        <h2 class="w-title">COSMOS<br><span class="l2">VINOS</span></h2>
+        <p class="w-desc">Sistema de etiquetas para una bodega ficticia inspirada en constelaciones. Cada vino lleva el nombre de una constelación y su paleta es consecuente con ella: Orión azul nocturno, Casiopea amarillo solar, Lyra en magenta vibrante.</p>
+        <div class="w-tags">
+          <span class="tag">Illustrator</span>
+          <span class="tag">Identidad</span>
+          <span class="tag">Tipografía</span>
+          <span class="tag">Packaging</span>
+        </div>
+        <div class="inspo">
+          <div class="inspo-lbl">Referencia</div>
+          <p class="inspo-txt">Cartografía estelar histórica y la estética del collage analógico — letras recortadas como si el cosmos las hubiera dispersado.</p>
+        </div>
       </div>
-      <!-- CONTROLES DEL CARRUSEL -->
-      <div class="carousel-controls">
-        <button class="cc-btn active" data-index="0">Orión</button>
-        <button class="cc-btn" data-index="1">Casiopea</button>
-        <button class="cc-btn" data-index="2">Lyra</button>
-      </div>
-      <div class="inspo">
-        <div class="inspo-lbl">Referencia</div>
-        <p class="inspo-txt">Cartografía estelar histórica y la estética del collage analógico.</p>
+    </div>
+    <div class="wp">
+      <div class="pdiv"></div><div class="c-tl"></div><div class="c-br"></div>
+      <div class="wp-grid c3">
+        <img src="etiqueta-1.jpg" alt="Orion Frente">
+        <img src="etiqueta-2.jpg" alt="Cassiopeia Frente">
+        <img src="etiqueta-3.jpg" alt="Lyra Frente">
       </div>
     </div>
   </div>
-  <div class="wp" id="cosmos-carousel">
-    <div class="pdiv"></div><div class="c-tl"></div><div class="c-br"></div>
-    <!-- SLIDE 0: ORIÓN -->
-    <div class="carousel-slide active" data-slide="0">
-      <div class="slide-inner">
-        <img src="etiqueta-1.jpg" alt="Orión frente" class="slide-label">
-        <video class="slide-video" src="video-orion.mp4" muted loop playsinline></video>
+  <!-- DORSOS: cada par frente/dorso -->
+  <div class="label-pair-section fu">
+    <div class="sec-label" style="margin-bottom:12px">Sistema completo</div>
+    <h3>FRENTE<br><span style="-webkit-text-stroke:1px rgba(240,240,240,.4);color:transparent">Y MOCKUPS</span></h3>
+    <p class="sub">Etiqueta Principal · Visualización del Producto</p>
+    <!-- ORIÓN -->
+<div class="fila-vino">
+  <div class="columna-vino">
+    <p class="titulo-vino-etiqueta">Orion - Frente</p>
+    <img src="etiqueta-1.jpg" alt="Orion Frente" class="img-vino-dinamica">
+  </div>
+  <div class="columna-vino">
+    <p class="titulo-vino-etiqueta">Orion - Mockup</p>
+    <img src="mockup-etiqueta1.jpg" alt="Mockup Orion" class="img-vino-dinamica">
+  </div>
+</div>
+    <!-- CASSIOPEA -->
+<div class="fila-vino">
+  <div class="columna-vino">
+    <p class="titulo-vino-etiqueta">Cassiopeia - Frente</p>
+    <img src="etiqueta-2.jpg" alt="Cassiopeia Frente" class="img-vino-dinamica">
+  </div>
+  <div class="columna-vino">
+    <p class="titulo-vino-etiqueta">Cassiopeia - Mockup</p>
+    <img src="mockup-etiqueta2.jpg" alt="Mockup Cassiopeia" class="img-vino-dinamica">
+  </div>
+</div>
+    <!-- LYRA -->
+<div class="fila-vino">
+  <div class="columna-vino">
+    <p class="titulo-vino-etiqueta">Lyra - Frente</p>
+    <img src="etiqueta-3.jpg" alt="Lyra Frente" class="img-vino-dinamica">
+  </div>
+  <div class="columna-vino">
+    <p class="titulo-vino-etiqueta">Lyra - Mockup</p>
+    <img src="mockup-etiqueta3.jpg" alt="Mockup Lyra" class="img-vino-dinamica">
+  </div>
+</div>
+  <div class="page-nav">
+    <a href="index.html" class="pn-home">← Índice</a>
+    <a href="work-strokes.html">
+      <div>
+        <span style="font-size:10px;letter-spacing:.2em;display:block">Siguiente trabajo</span>
+        <span class="pn-label">The Strokes →</span>
       </div>
-    </div>
-    <!-- SLIDE 1: CASIOPEA -->
-    <div class="carousel-slide" data-slide="1">
-      <div class="slide-inner">
-        <img src="etiqueta-2.jpg" alt="Casiopea frente" class="slide-label">
-        <video class="slide-video" src="video-casiopea.mp4" muted loop playsinline></video>
-      </div>
-    </div>
-    <!-- SLIDE 2: LYRA -->
-    <div class="carousel-slide" data-slide="2">
-      <div class="slide-inner">
-        <img src="etiqueta-3.jpg" alt="Lyra frente" class="slide-label">
-        <video class="slide-video" src="video-lyra.mp4" muted loop playsinline></video>
-      </div>
-    </div>
+    </a>
   </div>
 </div>
 
@@ -396,53 +383,7 @@ window.addEventListener('scroll',()=>{
 },{passive:true});
 document.querySelectorAll('.fu').forEach(el=>
   new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on')})},{threshold:.1}).observe(el)
-);
-
-/* CARRUSEL + AUTOPLAY VIDEO AL LLEGAR A LA SECCIÓN */
-(function(){
-  const slides   = document.querySelectorAll('.carousel-slide');
-  const btns     = document.querySelectorAll('.cc-btn');
-  const carousel = document.getElementById('cosmos-carousel');
-  let current    = 0;
-
-  function goTo(index){
-    // Pausar video del slide anterior
-    const prevVideo = slides[current].querySelector('video');
-    if(prevVideo){ prevVideo.pause(); prevVideo.currentTime = 0; }
-
-    slides[current].classList.remove('active');
-    btns[current].classList.remove('active');
-    current = index;
-    slides[current].classList.add('active');
-    btns[current].classList.add('active');
-
-    // Reproducir video del slide actual si la sección es visible
-    const video = slides[current].querySelector('video');
-    if(video && isVisible) video.play();
-  }
-
-  btns.forEach(btn => {
-    btn.addEventListener('click', ()=> goTo(parseInt(btn.dataset.index)));
-  });
-
-  // Activar video cuando la sección entra en pantalla
-  let isVisible = false;
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      isVisible = entry.isIntersecting;
-      const video = slides[current].querySelector('video');
-      if(!video) return;
-      if(isVisible){
-        video.play();
-      } else {
-        video.pause();
-        video.currentTime = 0;
-      }
-    });
-  }, { threshold: 0.3 });
-
-  if(carousel) observer.observe(carousel);
-})();  
+);  
   
 </script>
 </body></html>
