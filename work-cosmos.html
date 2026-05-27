@@ -264,14 +264,9 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
 }
 
 @media(max-width:640px){
-  .carr-slide{
-    grid-template-columns:1fr !important;
-    gap:16px !important;
-  }
-  .carr-slide img,
-  .carr-slide video{
-    max-height:45vw !important;
-  }
+  .carr-slide{grid-template-columns:1fr !important;gap:16px !important;}
+  .carr-slide img,.carr-slide video{max-height:45vw !important;}
+  .carr-flecha{display:none !important;}
 }
   
 </style>
@@ -373,7 +368,7 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
       </div>
 
       <!-- Flecha izquierda -->
-      <button onclick="cambiarSlide(-1)" style="position:absolute;left:0;top:50%;transform:translateY(-50%);
+      <button class="carr-flecha" onclick="cambiarSlide(-1)" style="position:absolute;left:0;top:50%;transform:translateY(-50%);
         background:none;border:1px solid rgba(26,86,255,.4);color:#4d7fff;
         font-size:20px;width:40px;height:40px;cursor:pointer;
         display:flex;align-items:center;justify-content:center;transition:all .3s;"
@@ -381,7 +376,7 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
         onmouseout="this.style.background='none'">←</button>
 
       <!-- Flecha derecha -->
-      <button onclick="cambiarSlide(1)" style="position:absolute;right:0;top:50%;transform:translateY(-50%);
+      <button class="carr-flecha" onclick="cambiarSlide(1)" style="position:absolute;right:0;top:50%;transform:translateY(-50%);
         background:none;border:1px solid rgba(26,86,255,.4);color:#4d7fff;
         font-size:20px;width:40px;height:40px;cursor:pointer;
         display:flex;align-items:center;justify-content:center;transition:all .3s;"
@@ -456,6 +451,21 @@ document.querySelectorAll('.fu').forEach(el=>
     mostrar((actual + dir + total) % total);
   };
   window.irASlide = function(n){ mostrar(n); };
+
+  // Swipe táctil
+  var touchStartX = 0;
+  var carDiv = document.querySelector('#carousel-section [style*="position:relative"]');
+  if(carDiv){
+    carDiv.addEventListener('touchstart', function(e){
+      touchStartX = e.touches[0].clientX;
+    }, {passive:true});
+    carDiv.addEventListener('touchend', function(e){
+      var diff = touchStartX - e.changedTouches[0].clientX;
+      if(Math.abs(diff) > 40){
+        cambiarSlide(diff > 0 ? 1 : -1);
+      }
+    }, {passive:true});
+  }
 
   const section = document.getElementById('carousel-section');
   if(section){
