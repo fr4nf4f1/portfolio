@@ -263,7 +263,16 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   }
 }
 
-
+@media(max-width:640px){
+  .carr-slide{
+    grid-template-columns:1fr !important;
+    gap:16px !important;
+  }
+  .carr-slide img,
+  .carr-slide video{
+    max-height:45vw !important;
+  }
+}
   
 </style>
 </head>
@@ -328,7 +337,7 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
     <div style="position:relative;padding:0 32px;">
 
       <!-- Slide 0: Orión -->
-      <div class="carr-slide" id="slide-0" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,2vw,32px);align-items:center;">
+      <div class="carr-slide" id="slide-0" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(8px,1.5vw,20px);align-items:center;">
         <div>
           <div class="label-col-title">Orión — Frente</div>
           <img src="etiqueta-1.jpg" alt="Orión frente" style="width:100%;object-fit:contain;max-height:55svh;">
@@ -340,7 +349,7 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
       </div>
 
       <!-- Slide 1: Casiopea -->
-      <div class="carr-slide" id="slide-1" style="display:none;grid-template-columns:1fr 1fr;gap:clamp(12px,2vw,32px);align-items:center;">
+      <div class="carr-slide" id="slide-1" style="display:none;grid-template-columns:1fr 1fr;gap:clamp(8px,1.5vw,20px);align-items:center;">
         <div>
           <div class="label-col-title">Casiopea — Frente</div>
           <img src="etiqueta-2.jpg" alt="Casiopea frente" style="width:100%;object-fit:contain;max-height:55svh;">
@@ -352,7 +361,7 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
       </div>
 
       <!-- Slide 2: Lyra -->
-      <div class="carr-slide" id="slide-2" style="display:none;grid-template-columns:1fr 1fr;gap:clamp(12px,2vw,32px);align-items:center;">
+      <div class="carr-slide" id="slide-2" style="display:none;grid-template-columns:1fr 1fr;gap:clamp(8px,1.5vw,20px);align-items:center;">
         <div>
           <div class="label-col-title">Lyra — Frente</div>
           <img src="etiqueta-3.jpg" alt="Lyra frente" style="width:100%;object-fit:contain;max-height:55svh;">
@@ -380,7 +389,7 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
         onmouseout="this.style.background='none'">→</button>
 
       <!-- Puntitos indicadores -->
-      <div style="display:flex;justify-content:center;gap:10px;margin-top:24px;">
+      <div style="display:flex;justify-content:center;gap:10px;margin-top:40px;">
         <span class="carr-dot" onclick="irASlide(0)" style="width:8px;height:8px;border-radius:50%;background:var(--blue);cursor:pointer;"></span>
         <span class="carr-dot" onclick="irASlide(1)" style="width:8px;height:8px;border-radius:50%;background:rgba(26,86,255,.3);cursor:pointer;"></span>
         <span class="carr-dot" onclick="irASlide(2)" style="width:8px;height:8px;border-radius:50%;background:rgba(26,86,255,.3);cursor:pointer;"></span>
