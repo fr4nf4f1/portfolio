@@ -320,45 +320,78 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
       </div>
     </div>
   </div>
-  <!-- DORSOS: cada par frente/dorso -->
-  <div class="label-pair-section fu">
+<div class="label-pair-section fu" id="carousel-section">
     <div class="sec-label" style="margin-bottom:12px">Sistema completo</div>
-    <h3>FRENTE<br><span style="-webkit-text-stroke:1px rgba(240,240,240,.4);color:transparent">Y MOCKUPS</span></h3>
-    <p class="sub">Etiqueta Principal · Visualización del Producto</p>
-    <!-- ORIÓN -->
-<div class="fila-vino">
-  <div class="columna-vino">
-    <p class="titulo-vino-etiqueta">Orion - Frente</p>
-    <img src="etiqueta-1.jpg" alt="Orion Frente" class="img-vino-dinamica">
-  </div>
-  <div class="columna-vino">
-    <p class="titulo-vino-etiqueta">Orion - Mockup</p>
-    <img src="mockup-etiqueta1.jpg" alt="Mockup Orion" class="img-vino-dinamica">
-  </div>
-</div>
-    <!-- CASSIOPEA -->
-<div class="fila-vino">
-  <div class="columna-vino">
-    <p class="titulo-vino-etiqueta">Cassiopeia - Frente</p>
-    <img src="etiqueta-2.jpg" alt="Cassiopeia Frente" class="img-vino-dinamica">
-  </div>
-  <div class="columna-vino">
-    <p class="titulo-vino-etiqueta">Cassiopeia - Mockup</p>
-    <img src="mockup-etiqueta2.jpg" alt="Mockup Cassiopeia" class="img-vino-dinamica">
-  </div>
-</div>
-    <!-- LYRA -->
-<div class="fila-vino">
-  <div class="columna-vino">
-    <p class="titulo-vino-etiqueta">Lyra - Frente</p>
-    <img src="etiqueta-3.jpg" alt="Lyra Frente" class="img-vino-dinamica">
-  </div>
-  <div class="columna-vino">
-    <p class="titulo-vino-etiqueta">Lyra - Mockup</p>
-    <img src="mockup-etiqueta3.jpg" alt="Mockup Lyra" class="img-vino-dinamica">
-  </div>
-</div>
-  <div class="page-nav">
+    <h3>FRENTE Y <span style="-webkit-text-stroke:1px rgba(240,240,240,.4);color:transparent">MOCKUP</span></h3>
+    <p class="sub">Etiqueta · Visualización del producto</p>
+
+    <div style="position:relative;padding:0 32px;">
+
+      <!-- Slide 0: Orión -->
+      <div class="carr-slide" id="slide-0" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,2vw,32px);align-items:center;">
+        <div>
+          <div class="label-col-title">Orión — Frente</div>
+          <img src="etiqueta-1.jpg" alt="Orión frente" style="width:100%;object-fit:contain;max-height:55svh;">
+        </div>
+        <div>
+          <div class="label-col-title">Orión — Mockup</div>
+          <video id="vid-0" src="video-orion.mp4" muted loop playsinline style="width:100%;max-height:55svh;object-fit:contain;display:block;"></video>
+        </div>
+      </div>
+
+      <!-- Slide 1: Casiopea -->
+      <div class="carr-slide" id="slide-1" style="display:none;grid-template-columns:1fr 1fr;gap:clamp(12px,2vw,32px);align-items:center;">
+        <div>
+          <div class="label-col-title">Casiopea — Frente</div>
+          <img src="etiqueta-2.jpg" alt="Casiopea frente" style="width:100%;object-fit:contain;max-height:55svh;">
+        </div>
+        <div>
+          <div class="label-col-title">Casiopea — Mockup</div>
+          <video id="vid-1" src="video-casiopea.mp4" muted loop playsinline style="width:100%;max-height:55svh;object-fit:contain;display:block;"></video>
+        </div>
+      </div>
+
+      <!-- Slide 2: Lyra -->
+      <div class="carr-slide" id="slide-2" style="display:none;grid-template-columns:1fr 1fr;gap:clamp(12px,2vw,32px);align-items:center;">
+        <div>
+          <div class="label-col-title">Lyra — Frente</div>
+          <img src="etiqueta-3.jpg" alt="Lyra frente" style="width:100%;object-fit:contain;max-height:55svh;">
+        </div>
+        <div>
+          <div class="label-col-title">Lyra — Mockup</div>
+          <video id="vid-2" src="video-lyra.mp4" muted loop playsinline style="width:100%;max-height:55svh;object-fit:contain;display:block;"></video>
+        </div>
+      </div>
+
+      <!-- Flecha izquierda -->
+      <button onclick="cambiarSlide(-1)" style="position:absolute;left:0;top:50%;transform:translateY(-50%);
+        background:none;border:1px solid rgba(26,86,255,.4);color:#4d7fff;
+        font-size:20px;width:40px;height:40px;cursor:pointer;
+        display:flex;align-items:center;justify-content:center;transition:all .3s;"
+        onmouseover="this.style.background='rgba(26,86,255,.15)'"
+        onmouseout="this.style.background='none'">←</button>
+
+      <!-- Flecha derecha -->
+      <button onclick="cambiarSlide(1)" style="position:absolute;right:0;top:50%;transform:translateY(-50%);
+        background:none;border:1px solid rgba(26,86,255,.4);color:#4d7fff;
+        font-size:20px;width:40px;height:40px;cursor:pointer;
+        display:flex;align-items:center;justify-content:center;transition:all .3s;"
+        onmouseover="this.style.background='rgba(26,86,255,.15)'"
+        onmouseout="this.style.background='none'">→</button>
+
+      <!-- Puntitos indicadores -->
+      <div style="display:flex;justify-content:center;gap:10px;margin-top:24px;">
+        <span class="carr-dot" onclick="irASlide(0)" style="width:8px;height:8px;border-radius:50%;background:var(--blue);cursor:pointer;"></span>
+        <span class="carr-dot" onclick="irASlide(1)" style="width:8px;height:8px;border-radius:50%;background:rgba(26,86,255,.3);cursor:pointer;"></span>
+        <span class="carr-dot" onclick="irASlide(2)" style="width:8px;height:8px;border-radius:50%;background:rgba(26,86,255,.3);cursor:pointer;"></span>
+      </div>
+
+      <!-- Nombre del slide -->
+      <div id="carr-label" style="text-align:center;font-family:'Space Mono',monospace;font-size:10px;
+        letter-spacing:.25em;text-transform:uppercase;color:rgba(26,86,255,.6);margin-top:10px;">
+        Orión
+      </div>
+    </div>  <div class="page-nav">
     <a href="index.html" class="pn-home">← Índice</a>
     <a href="work-strokes.html">
       <div>
@@ -384,6 +417,51 @@ window.addEventListener('scroll',()=>{
 document.querySelectorAll('.fu').forEach(el=>
   new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on')})},{threshold:.1}).observe(el)
 );  
+
+/* CARRUSEL COSMOS */
+(function(){
+  const nombres = ['Orión','Casiopea','Lyra'];
+  let actual = 0;
+  const total = 3;
+  let seccionVisible = false;
+
+  function mostrar(n){
+    const vidAnterior = document.getElementById('vid-' + actual);
+    if(vidAnterior){ vidAnterior.pause(); vidAnterior.currentTime = 0; }
+    document.getElementById('slide-' + actual).style.display = 'none';
+
+    const dots = document.querySelectorAll('.carr-dot');
+    dots.forEach(function(d,i){
+      d.style.background = i === n ? 'var(--blue)' : 'rgba(26,86,255,.3)';
+    });
+
+    actual = n;
+    document.getElementById('slide-' + actual).style.display = 'grid';
+
+    const vidNuevo = document.getElementById('vid-' + actual);
+    if(vidNuevo && seccionVisible){ vidNuevo.play(); }
+    document.getElementById('carr-label').textContent = nombres[actual];
+  }
+
+  window.cambiarSlide = function(dir){
+    mostrar((actual + dir + total) % total);
+  };
+  window.irASlide = function(n){ mostrar(n); };
+
+  const section = document.getElementById('carousel-section');
+  if(section){
+    new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        seccionVisible = e.isIntersecting;
+        const vid = document.getElementById('vid-' + actual);
+        if(vid){
+          if(seccionVisible){ vid.play(); }
+          else { vid.pause(); vid.currentTime = 0; }
+        }
+      });
+    }, { threshold: 0.3 }).observe(section);
+  }
+})();  
   
 </script>
 </body></html>
