@@ -395,6 +395,12 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
         letter-spacing:.25em;text-transform:uppercase;color:rgba(26,86,255,.6);margin-top:10px;">
         Orión
       </div>
+
+      <div id="swipe-hint" style="text-align:center;font-family:'Space Mono',monospace;font-size:9px;
+        letter-spacing:.2em;text-transform:uppercase;color:rgba(26,86,255,.4);margin-top:6px;
+        transition:opacity 1s;">← deslizá →
+      </div>
+      
     </div>  <div class="page-nav">
     <a href="index.html" class="pn-home">← Índice</a>
     <a href="work-strokes.html">
@@ -452,6 +458,11 @@ document.querySelectorAll('.fu').forEach(el=>
   };
   window.irASlide = function(n){ mostrar(n); };
 
+
+// Ocultar hint al primer swipe
+  var hint = document.getElementById('swipe-hint');
+  var hintMostrado = false;
+  
   // Swipe táctil
   var touchStartX = 0;
   var carDiv = document.querySelector('#carousel-section [style*="position:relative"]');
@@ -463,6 +474,10 @@ document.querySelectorAll('.fu').forEach(el=>
       var diff = touchStartX - e.changedTouches[0].clientX;
       if(Math.abs(diff) > 40){
         cambiarSlide(diff > 0 ? 1 : -1);
+        if(hint && !hintMostrado){
+          hint.style.opacity = '0';
+          hintMostrado = true;
+        }
       }
     }, {passive:true});
   }
