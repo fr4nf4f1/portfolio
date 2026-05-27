@@ -267,6 +267,7 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   .carr-slide{grid-template-columns:1fr !important;gap:16px !important;}
   .carr-slide img,.carr-slide video{max-height:45vw !important;}
   .carr-flecha{display:none !important;}
+  .swipe-hint-mobile{ display:block !important; }
 }
   
 </style>
@@ -396,7 +397,8 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
         Orión
       </div>
 
-      <div id="swipe-hint" style="text-align:center;font-family:'Space Mono',monospace;font-size:9px;
+      <div id="swipe-hint" class="swipe-hint-mobile" style="display:none;text-align:center;
+        font-family:'Space Mono',monospace;font-size:9px;
         letter-spacing:.2em;text-transform:uppercase;color:rgba(26,86,255,.4);margin-top:6px;
         transition:opacity 1s;">← deslizá →
       </div>
