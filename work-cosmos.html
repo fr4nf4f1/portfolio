@@ -58,6 +58,11 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   padding:clamp(40px,5vw,80px) clamp(20px,3vw,56px);
   background:var(--gray);border-right:1px solid var(--gray3);
   position:relative;overflow:hidden;
+  position:sticky;
+  top:80px;
+  align-self:flex-start;
+  height:calc(100svh - 80px);
+  overflow-y:auto;
 }
 .ip::before{
   content:attr(data-n);position:absolute;bottom:-.1em;left:-.05em;
