@@ -140,13 +140,8 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   position:relative;overflow:hidden;
 }
 @media(max-width:768px){
-  #contact > div:first-child{
-    grid-template-columns:1fr;
-  }
-  #contact > div:first-child > div:last-child{
-    grid-template-columns:1fr 1fr;
-    border-top:1px solid var(--gray3);
-  }
+  #hero{flex-direction:column;justify-content:center;padding-top:120px}
+  .h-photo-wrap{width:min(340px,85vw);}
 }
 
 /* NUEVO: Ajustes para que respire en celulares */
