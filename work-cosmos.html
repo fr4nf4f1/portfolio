@@ -51,18 +51,17 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
 
 
 .work-page{min-height:100svh;display:flex;flex-direction:column;padding-top:80px}
-.w-hero{display:flex;align-items:stretch;min-height:calc(100svh - 80px);border-bottom:1px solid var(--gray3)}
+.w-hero{display:flex;align-items:flex-start;min-height:calc(100svh - 80px);border-bottom:1px solid var(--gray3)}
 .ip{
   width:clamp(280px,38%,480px);flex-shrink:0;
+  position:sticky;top:80px;
+  height:calc(100svh - 80px);
+  overflow-y:auto;
+  -ms-overflow-style:none;scrollbar-width:none;
   display:flex;flex-direction:column;justify-content:center;
   padding:clamp(40px,5vw,80px) clamp(20px,3vw,56px);
   background:var(--gray);border-right:1px solid var(--gray3);
   position:relative;overflow:hidden;
-  position:sticky;
-  top:80px;
-  align-self:flex-start;
-  height:calc(100svh - 80px);
-  overflow-y:auto;
 }
 .ip::before{
   content:attr(data-n);position:absolute;bottom:-.1em;left:-.05em;
