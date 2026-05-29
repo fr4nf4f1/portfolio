@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TREX App — Francisco Fafian</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,900;1,900&family=Barlow:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#1a56ff;--blue-l:#4d7fff;--blue-d:#0a2ecc;
+  --cyan:#00d4ff;--white:#f0f0f0;--black:#060608;
+  --gray:#0d0d14;--gray2:#13131e;--gray3:#1e1e2e;--text-m:#7070a0;
+  --fs-hero:clamp(60px,12vw,140px);--fs-big:clamp(40px,7vw,90px);
+  --fs-label:clamp(10px,1.2vw,12px);
+}
+html{scroll-behavior:smooth;background:var(--black)}
+body{font-family:'Barlow',sans-serif;color:var(--white);overflow-x:hidden}
+#progress{position:fixed;top:0;left:0;right:0;height:2px;z-index:999;background:var(--gray3)}
+#pf{height:100%;width:0%;background:linear-gradient(to right,var(--blue),var(--cyan));transition:width .1s linear}
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  padding:20px clamp(16px,6vw,100px);
+  display:flex;align-items:center;justify-content:space-between;
+  transition:background .4s;background:var(--black);
+}
+nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(26,86,255,.12)}
+.nav-logo{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.15em;
+  color:var(--white);text-decoration:none;display:flex;align-items:center;gap:8px;}
+.nav-logo::before{content:'';width:20px;height:1px;background:var(--blue)}
+.sec-label{font-family:'Space Mono',monospace;font-size:11px;
+  letter-spacing:.3em;color:var(--blue);text-transform:uppercase;
+  display:flex;align-items:center;gap:12px;}
+.sec-label::before{content:'';width:32px;height:1px;background:var(--blue)}
+.fu{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.fu.on{opacity:1;transform:translateY(0)}
+.tag{font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--text-m);background:var(--gray2);padding:5px 10px;
+  border:1px solid rgba(255,255,255,.06);}
+
+
+.work-page{min-height:100svh;display:flex;flex-direction:column;padding-top:80px}
+/* Layout de dos columnas con IP sticky */
+.w-hero{
+  display:flex;align-items:flex-start;
+  min-height:calc(100svh - 80px);
+  border-bottom:1px solid var(--gray3);
+}
+.ip{
+  width:clamp(280px,38%,480px);flex-shrink:0;
+  position:sticky;top:80px;
+  height:calc(100svh - 80px);
+  overflow-y:auto;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(40px,5vw,80px) clamp(20px,3vw,56px);
+  background:var(--gray);border-right:1px solid var(--gray3);
+}
+/* ocultar scrollbar del panel sticky */
+.ip::-webkit-scrollbar{display:none}
+.ip{-ms-overflow-style:none;scrollbar-width:none}
+.ip::before{
+  content:attr(data-n);position:absolute;bottom:-.1em;left:-.05em;
+  font-family:'Barlow Condensed',sans-serif;font-size:clamp(120px,20vw,220px);font-weight:900;
+  color:transparent;-webkit-text-stroke:1px rgba(26,86,255,.07);line-height:1;pointer-events:none;z-index:0;
+}
+.ip-in{position:relative;z-index:2}
+.w-idx{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.25em;color:var(--blue);
+  margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.w-idx::after{content:'';flex:1;height:1px;background:var(--blue);opacity:.25;max-width:60px}
+.w-type{display:inline-block;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--blue);border:1px solid rgba(26,86,255,.35);padding:4px 12px;margin-bottom:20px}
+.w-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(36px,4.5vw,62px);font-weight:900;
+  text-transform:uppercase;line-height:.95;color:var(--white);margin-bottom:16px}
+.w-title .l2{-webkit-text-stroke:1px rgba(240,240,240,.4);color:transparent}
+.w-desc{font-size:clamp(13px,1.3vw,15px);line-height:1.75;color:var(--text-m);margin-bottom:20px}
+.w-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:24px}
+.inspo{border-top:1px solid var(--gray3);padding-top:16px}
+.inspo-lbl{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.3em;
+  color:rgba(26,86,255,.6);text-transform:uppercase;margin-bottom:8px}
+.inspo-txt{font-size:13px;line-height:1.65;color:rgba(112,112,160,.85);
+  font-style:italic;border-left:2px solid var(--blue-d);padding-left:14px}
+/* Panel derecho — ocupa el resto y scrollea */
+.wp{
+  flex:1;position:relative;overflow:hidden;background:var(--black);
+  display:flex;align-items:center;justify-content:center;
+  padding:clamp(20px,3vw,48px);
+}
+/* Panel derecho que tiene contenido extra debajo del video */
+.wp-scroll{
+  flex:1;display:flex;flex-direction:column;
+  background:var(--black);
+}
+.wp-scroll .wp-main{
+  display:flex;align-items:center;justify-content:center;
+  padding:clamp(20px,3vw,48px);
+  min-height:calc(100svh - 80px);
+  position:relative;
+}
+.c-tl{position:absolute;top:14px;left:14px;width:22px;height:22px;
+  border-top:1px solid var(--blue);border-left:1px solid var(--blue);z-index:3;pointer-events:none}
+.c-br{position:absolute;bottom:14px;right:14px;width:22px;height:22px;
+  border-bottom:1px solid var(--blue);border-right:1px solid var(--blue);z-index:3;pointer-events:none}
+.pdiv{position:absolute;top:0;bottom:0;left:0;width:1px;
+  background:linear-gradient(to bottom,transparent,var(--blue),transparent);opacity:.35;z-index:5}
+.wp img{max-width:100%;max-height:80svh;object-fit:contain;display:block}
+/* Video principal */
+.main-video{
+  width:100%;max-height:78svh;
+  object-fit:contain;display:block;
+  border-radius:4px;
+}
+/* Sección mapa del sitio */
+.sitemap-section{
+  padding:clamp(60px,8vw,100px) clamp(20px,3vw,48px);
+  border-top:1px solid var(--gray3);
+}
+.sitemap-section h3{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:clamp(28px,4vw,48px);font-weight:900;
+  text-transform:uppercase;color:var(--white);margin-bottom:4px;
+}
+.sitemap-section .sub{
+  font-family:'Space Mono',monospace;font-size:10px;
+  letter-spacing:.2em;color:var(--text-m);
+  text-transform:uppercase;margin-bottom:clamp(28px,4vw,40px);
+}
+.sitemap-section img{
+  width:100%;object-fit:contain;display:block;
+  border:1px solid var(--gray3);
+}
+/* Nav entre páginas */
+.page-nav{display:flex;align-items:center;justify-content:space-between;
+  padding:clamp(32px,4vw,56px) clamp(16px,6vw,100px);
+  border-top:1px solid var(--gray3);flex-wrap:wrap;gap:16px}
+.page-nav a{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--text-m);text-decoration:none;
+  display:flex;align-items:center;gap:10px;transition:color .3s}
+.page-nav a:hover{color:var(--white)}
+.pn-label{font-family:'Barlow Condensed',sans-serif;font-size:clamp(18px,2.5vw,28px);
+  font-weight:700;text-transform:uppercase;color:var(--white);display:block;margin-top:4px}
+.pn-home{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--text-m);text-decoration:none;
+  border:1px solid var(--gray3);padding:10px 16px;transition:all .3s}
+.pn-home:hover{color:var(--white);border-color:var(--blue)}
+.ft-bar{display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:12px;border-top:1px solid var(--gray3);
+  padding:24px clamp(16px,6vw,100px);}
+.ft-c{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.15em;color:rgba(112,112,160,.35)}
+@media(max-width:768px){
+  .w-hero{flex-direction:column}
+  .ip{width:100%;border-right:none;border-bottom:1px solid var(--gray3);
+    position:relative;top:auto;height:auto;}
+  .wp,.wp-scroll .wp-main{min-height:50vw}
+}
+
+
+.desc-veil{position:fixed;inset:0;z-index:200;background:rgba(6,6,8,.93);
+  display:flex;align-items:center;justify-content:center;
+  padding:clamp(16px,4vw,48px);transition:opacity .6s ease,visibility .6s}
+.desc-veil.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.dv-inner{max-width:600px;width:100%;background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(8px);
+  padding:clamp(28px,4vw,52px);position:relative}
+.dv-bg{position:absolute;inset:0;background-size:cover;background-position:center;
+  opacity:.07;filter:saturate(.2);z-index:0}
+.dv-content{position:relative;z-index:2}
+.dv-tag{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.3em;
+  color:var(--blue);text-transform:uppercase;margin-bottom:14px}
+.dv-title{font-family:'Barlow Condensed',sans-serif;
+  font-size:clamp(36px,6vw,72px);font-weight:900;text-transform:uppercase;
+  line-height:.9;color:var(--white);margin-bottom:20px}
+.dv-title .l2{-webkit-text-stroke:1px rgba(240,240,240,.4);color:transparent}
+.dv-text{font-size:clamp(13px,1.3vw,15px);line-height:1.8;color:rgba(200,200,230,.8);margin-bottom:28px}
+.dv-btn{display:inline-flex;align-items:center;gap:12px;
+  font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--white);
+  background:var(--blue);border:none;padding:14px 28px;cursor:pointer;transition:background .3s}
+.dv-btn:hover{background:var(--blue-l)}
+
+</style>
+</head>
+<body>
+
+<div id="progress"><div id="pf"></div></div>
+
+<nav id="nav">
+  <a class="nav-logo" href="index.html">
+    <img src="Logo.png" alt="Francisco Fafian" style="height:32px;width:auto;filter:brightness(0) invert(1)">
+  </a>
+</nav>
+<div style="position:fixed;top:0;right:clamp(16px,6vw,100px);z-index:500;display:flex;align-items:center;gap:24px;height:72px;">
+  <a href="index.html#works-index" style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#7070a0;text-decoration:none;" onmouseover="this.style.color='#f0f0f0'" onmouseout="this.style.color='#7070a0'">Proyectos</a>
+  <a href="index.html#contact" style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#7070a0;text-decoration:none;" onmouseover="this.style.color='#f0f0f0'" onmouseout="this.style.color='#7070a0'">Contactame</a>
+</div>
+
+<!-- VELO DESCRIPTIVO -->
+<div class="desc-veil" id="veil">
+  <div class="dv-inner">
+    <div class="dv-bg" style="background:linear-gradient(135deg,#0a2ecc,#060608)"></div>
+    <div class="dv-content">
+      <div class="dv-tag">Diseño de App · 2025</div>
+      <div class="dv-title">TREX<span class="l2"><br>APP</span></div>
+      <p class="dv-text">Aplicación móvil diseñada para corredores. En ella podés registrar y ver tus entrenamientos, anotarte a carreras y conectar con tu entrenador. El diseño busca ser tan dinámico como quien la usa — limpio, rápido y orientado a la acción.</p>
+      <button class="dv-btn" onclick="document.getElementById('veil').classList.add('hidden');startVideo()">Ver el trabajo →</button>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENIDO -->
+<div class="work-page">
+  <div class="w-hero">
+
+    <!-- PANEL IZQUIERDO STICKY -->
+    <div class="ip" data-n="03">
+      <div class="ip-in">
+        <div class="w-idx">01 / 01</div>
+        <span class="w-type">Diseño de Aplicación</span>
+        <h2 class="w-title">TREX<br><span class="l2">APP</span></h2>
+        <p class="w-desc">App mobile para corredores. Registrá tus entrenamientos, anotate a carreras y conectá con tu entrenador — todo en un mismo lugar. El sistema de diseño prioriza la velocidad de lectura y la acción inmediata.</p>
+        <div class="w-tags">
+          <span class="tag">Figma</span>
+          <span class="tag">UI Design</span>
+          <span class="tag">UX</span>
+          <span class="tag">Mobile</span>
+          <span class="tag">Prototipo</span>
+        </div>
+        <div class="inspo">
+          <div class="inspo-lbl">Referencia</div>
+          <p class="inspo-txt">Strava y Nike Run Club como referentes de UX, con una identidad visual más agresiva y editorial — el diseño corre a la misma velocidad que el usuario.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANEL DERECHO CON VIDEO + SITEMAP -->
+    <div class="wp-scroll">
+
+      <!-- VIDEO -->
+      <div class="wp-main">
+        <div class="pdiv"></div><div class="c-tl"></div><div class="c-br"></div>
+        <video id="trex-video" class="main-video"
+          src="Video_TREX__para_porfolio_.MP4"
+          muted loop playsinline
+          style="opacity:0;transition:opacity .8s;">
+        </video>
+      </div>
+
+      <!-- MAPA DEL SITIO — agregar cuando lo tengas -->
+      <div class="sitemap-section fu">
+        <div class="sec-label" style="margin-bottom:12px">Arquitectura</div>
+        <h3>MAPA DEL <span style="-webkit-text-stroke:1px rgba(240,240,240,.4);color:transparent">SITIO</span></h3>
+        <p class="sub">Estructura de navegación · Flujo de pantallas</p>
+        <!-- Reemplazar el placeholder con: <img src="mapa-sitio.jpg" alt="Mapa del sitio TREX"> -->
+        <div style="width:100%;aspect-ratio:16/9;border:1px dashed rgba(26,86,255,.2);
+          display:flex;align-items:center;justify-content:center;
+          font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;
+          color:rgba(26,86,255,.4);text-align:center;padding:40px;">
+          Mapa del sitio<br>
+          <span style="font-size:9px;opacity:.6;display:block;margin-top:8px">Reemplazar con img src="mapa-sitio.jpg"</span>
+        </div>
+      </div>
+
+    </div><!-- /wp-scroll -->
+  </div><!-- /w-hero -->
+
+  <div class="page-nav">
+    <a href="work-whatfuture.html">
+      <div>
+        <span style="font-size:10px;letter-spacing:.2em;display:block">Sección anterior</span>
+        <span class="pn-label">← Afiche</span>
+      </div>
+    </a>
+    <a href="index.html" class="pn-home">Índice</a>
+  </div>
+  <div class="ft-bar">
+  <span class="ft-c">© 2025 Francisco Fafian — Portfolio</span>
+  <span class="ft-c">Buenos Aires, Argentina</span>
+</div>
+</div>
+
+<script>
+
+const pf=document.getElementById('pf'),nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{
+  const p=window.scrollY/(document.body.scrollHeight-window.innerHeight);
+  pf.style.width=(p*100)+'%';
+  nav.classList.toggle('sc',window.scrollY>60);
+},{passive:true});
+document.querySelectorAll('.fu').forEach(el=>
+  new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on')})},{threshold:.1}).observe(el)
+);
+
+
+function startVideo(){
+  const v = document.getElementById('trex-video');
+  if(v){
+    v.play();
+    v.style.opacity = '1';
+  }
+}
+
+// También autoplay cuando la sección entra en pantalla
+new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    const v = document.getElementById('trex-video');
+    if(!v) return;
+    if(e.isIntersecting){ v.play(); v.style.opacity='1'; }
+    else { v.pause(); }
+  });
+}, {threshold:0.3}).observe(document.querySelector('.wp-main') || document.body);
+</script>
+</body></html>
