@@ -217,7 +217,20 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
     object-fit: contain;
   }
 } /* <--- Esta es la única llave que cierra el bloque Mobile */
-
+  
+/* ACÁ DEVOLVEMOS EL CÓDIGO DEL VELO QUE SE HABÍA BORRADO */
+.desc-veil {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(6,6,8,.93);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px,6vw,100px);
+  transition: opacity .6s ease, visibility .6s;
+}
+  
 .desc-veil.hidden{opacity:0;visibility:hidden;pointer-events:none}
 .dv-inner{
   max-width:600px;width:100%;
