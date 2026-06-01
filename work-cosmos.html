@@ -150,15 +150,30 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   border:1px solid var(--gray3);padding:10px 16px;transition:all .3s}
 .pn-home:hover{color:var(--white);border-color:var(--blue)}
 /* Mobile */
-@media(max-width:768px){
-  .work-page {
-    margin-left: 0;
-  }
-
-  /* Oculta el nombre del trabajo en la navegación inferior en celulares */
+@media(max-width:768px) {
+  /* 1. Ocultamos el bloque del nombre del proyecto (esto ya lo tenías) */
   .page-nav .pn-label {
     display: none !important;
-    <span style="font-size:10px;letter-spacing:.2em;display:block">SIGUIENTE TRABAJO →</span>
+  }
+
+  /* 2. Le agregamos automáticamente una flecha izquierda al texto de la izquierda */
+  .page-nav a:first-child div span:first-child::before {
+    content: "← ";
+  }
+
+  /* 3. Le agregamos automáticamente una flecha derecha al texto de la derecha */
+  .page-nav a:last-child div span:first-child::after {
+    content: " →";
+  }
+
+  /* 4. Caso especial para cuando el botón "Índice" queda a la derecha (como en TREX) */
+  .page-nav .pn-home:last-child::after {
+    content: " →";
+  }
+}
+  
+  .work-page {
+    margin-left: 0;
   }
   
   .w-hero {
