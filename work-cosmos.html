@@ -152,31 +152,71 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
 /* Mobile */
 @media(max-width:768px) {
   .dv-inner {
-    margin-top: 80px; /* Empuja la caja hacia abajo para respetar el espacio del menú superior */
-    max-height: 75vh; /* Limita la altura de la caja para que no ocupe más que la pantalla */
-    overflow-y: auto; /* Agrega scroll interno si la descripción llega a ser muy larga */
+    margin-top: 80px; 
+    max-height: 75vh; 
+    overflow-y: auto; 
   }
   
-  /* 1. Ocultamos el bloque del nombre del proyecto (esto ya lo tenías) */
   .page-nav .pn-label {
     display: none !important;
   }
 
-  /* 2. Le agregamos automáticamente una flecha izquierda al texto de la izquierda */
   .page-nav a:first-child div span:first-child::before {
     content: "← ";
   }
 
-  /* 3. Le agregamos automáticamente una flecha derecha al texto de la derecha */
   .page-nav a:last-child div span:first-child::after {
     content: " →";
   }
 
-  /* 4. Caso especial para cuando el botón "Índice" queda a la derecha (como en TREX) */
   .page-nav .pn-home:last-child::after {
     content: " →";
   }
-}
+  
+  /* Se eliminó la llave que cortaba el código acá */
+
+  .work-page {
+    margin-left: 0;
+  }
+  
+  .w-hero {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .ip {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--gray3);
+  }
+
+  .wp {
+    width: 100%;
+    min-height: auto;
+    padding: 30px 16px; 
+  }
+
+  .wp-grid.c3 {
+    grid-template-columns: repeat(3, 1fr) !important; 
+    gap: 10px; 
+  }
+
+  .wp-grid.c2 {
+    grid-template-columns: repeat(2, 1fr) !important; 
+    gap: 10px;
+  }
+
+  .wp-grid img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 45svh !important; 
+    object-fit: contain;
+  }
+} /* <--- La llave de cierre general ahora está al final de todo el bloque mobile */
   
   .work-page {
     margin-left: 0;
