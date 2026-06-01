@@ -155,7 +155,6 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
     margin-left: 0;
   }
   
-  /* CLAVE 1: Apilamos la info y el trabajo verticalmente */
   .w-hero {
     flex-direction: column;
     min-height: auto;
@@ -171,17 +170,29 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
     border-bottom: 1px solid var(--gray3);
   }
 
-  /* CLAVE 2: Aseguramos que el contenedor de las 3 etiquetas ocupe el ancho de la pantalla */
   .wp {
     width: 100%;
     min-height: auto;
-    padding: 40px 20px;
+    padding: 30px 16px; /* Ajustamos padding para ganar espacio */
   }
 
-  /* CLAVE 3: Ponemos las 3 etiquetas una debajo de la otra para que no se achiquen demasiado */
-  .wp-grid.c3, .wp-grid.c2 {
-    grid-template-columns: 1fr;
-    gap: 40px;
+  /* NUEVA MODIFICACIÓN: Forzamos a que sigan una al lado de la otra y más chicas */
+  .wp-grid.c3 {
+    grid-template-columns: repeat(3, 1fr) !important; /* 3 columnas fijas */
+    gap: 10px; /* Menos espacio entre ellas para que no se saturen */
+  }
+
+  .wp-grid.c2 {
+    grid-template-columns: repeat(2, 1fr) !important; /* 2 columnas fijas si las usás */
+    gap: 10px;
+  }
+
+  /* Aseguramos que las imágenes escalen de forma limpia sin estirarse raro */
+  .wp-grid img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 45svh !important; 
+    object-fit: contain;
   }
 }
 
