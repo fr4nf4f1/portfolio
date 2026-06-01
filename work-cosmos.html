@@ -150,9 +150,39 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   border:1px solid var(--gray3);padding:10px 16px;transition:all .3s}
 .pn-home:hover{color:var(--white);border-color:var(--blue)}
 /* Mobile */
-@media(max-width:768px){   
-  .ip{position:relative;top:auto;left:auto;width:100%;height:auto;border-right:none;border-bottom:1px solid var(--gray3);}
-  .work-page{margin-left:0;}
+@media(max-width:768px){
+  .work-page {
+    margin-left: 0;
+  }
+  
+  /* CLAVE 1: Apilamos la info y el trabajo verticalmente */
+  .w-hero {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .ip {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--gray3);
+  }
+
+  /* CLAVE 2: Aseguramos que el contenedor de las 3 etiquetas ocupe el ancho de la pantalla */
+  .wp {
+    width: 100%;
+    min-height: auto;
+    padding: 40px 20px;
+  }
+
+  /* CLAVE 3: Ponemos las 3 etiquetas una debajo de la otra para que no se achiquen demasiado */
+  .wp-grid.c3, .wp-grid.c2 {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
 }
 
 .desc-veil{
