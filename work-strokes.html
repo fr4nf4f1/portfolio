@@ -171,13 +171,13 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
     padding: 40px 20px;
   }
 
-  /* 2. Achicamos la imagen de referencia dentro de la presentación */
+/* 2. Achicamos la imagen de referencia dentro de la presentación */
   .ip img, .inspo-ref-img {
-    max-height: 220px; /* Limita el alto para que sea una referencia compacta */
+    max-height: 220px;
     width: auto;
     max-width: 100%;
     object-fit: contain;
-    margin: 14px 0 0 0; 
+    margin: 14px auto 0 auto; /* ACÁ ESTÁ LA MAGIA: 'auto' a los costados la centra */
     display: block;
   }
 
