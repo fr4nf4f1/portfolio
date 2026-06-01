@@ -148,13 +148,59 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   border:1px solid var(--gray3);padding:10px 16px;transition:all .3s}
 .pn-home:hover{color:var(--white);border-color:var(--blue)}
 /* Mobile */
+/* Mobile */
 @media(max-width:768px){
-  .w-hero{flex-direction:column}
-  .ip{width:100%;border-right:none;border-bottom:1px solid var(--gray3)}
-  .wp{min-height:60vw}
-  .work-page{margin-left:0;}
-  .wp img { max-width:90%; max-height:70vw; }
-  .inspo-ref-img { width:500px; height:200px; }
+  .work-page {
+    margin-left: 0;
+  }
+  
+  /* 1. Cambiamos la dirección a columna para que el trabajo baje */
+  .w-hero {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .ip {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--gray3);
+    padding: 40px 20px;
+  }
+
+  /* 2. Achicamos la imagen de referencia dentro de la presentación */
+  .ip img, .inspo-ref-img {
+    max-height: 220px; /* Limita el alto para que sea una referencia compacta */
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    margin: 14px 0 0 0; 
+    display: block;
+  }
+
+  /* 3. Hacemos que el panel del trabajo ocupe todo el ancho justo debajo */
+  .wp {
+    width: 100%;
+    min-height: auto;
+    padding: 40px 16px;
+    display: block !important;
+  }
+
+  /* 4. Si las imágenes del trabajo están en grilla, las ordenamos hacia abajo */
+  .wp-grid {
+    grid-template-columns: 1fr !important;
+    gap: 30px;
+  }
+
+  .wp img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 60svh !important;
+    object-fit: contain;
+  }
 }
 
 
