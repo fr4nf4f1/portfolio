@@ -151,6 +151,12 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
 .pn-home:hover{color:var(--white);border-color:var(--blue)}
 /* Mobile */
 @media(max-width:768px) {
+  .dv-inner {
+    margin-top: 80px; /* Empuja la caja hacia abajo para respetar el espacio del menú superior */
+    max-height: 75vh; /* Limita la altura de la caja para que no ocupe más que la pantalla */
+    overflow-y: auto; /* Agrega scroll interno si la descripción llega a ser muy larga */
+  }
+  
   /* 1. Ocultamos el bloque del nombre del proyecto (esto ya lo tenías) */
   .page-nav .pn-label {
     display: none !important;
@@ -222,7 +228,8 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   background:rgba(6,6,8,.93);   
   display:flex;align-items:center;justify-content:center;   
   padding:clamp(16px,6vw,100px);   
-  transition:opacity .6s ease,visibility .6s; }
+  transition:opacity .6s ease,visibility .6s;
+  z-index: 200;}
 .desc-veil.hidden{opacity:0;visibility:hidden;pointer-events:none}
 .dv-inner{
   max-width:600px;width:100%;
