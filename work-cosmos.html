@@ -150,38 +150,10 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   border:1px solid var(--gray3);padding:10px 16px;transition:all .3s}
 .pn-home:hover{color:var(--white);border-color:var(--blue)}
 /* Mobile */
-@media (max-width: 768px) {
-  /* 1. El panel de información/descripción deja de ser fijo y ocupa el 100% */
-  .ip {
-    position: relative !important;
-    width: 100% !important;
-    height: auto !important;
-    margin: 0 !important;
-    padding: 24px clamp(16px, 6vw, 100px) !important;
-  }
-
-  /* 2. El contenedor de los trabajos (.wp o el carrusel) se posiciona abajo de la info 
-     y anulamos el margen izquierdo que lo empujaba a la derecha */
-  .wp, #carousel-section {
-    position: relative !important;
-    width: 100% !important;
-    margin-left: 0 !important; /* Clave para que no se vaya a la derecha */
-    left: 0 !important;
-    display: block !important;
-  }
-
-  /* 3. Aseguramos que las imágenes/videos de las etiquetas no se desborden y sean responsivas */
-  #carousel-section img, 
-  #carousel-section video,
-  .carr-item {
-    width: 100% !important;
-    max-width: 100% !important;
-    height: auto !important;
-  }
-}
+@media(max-width:768px){   
+  .ip{position:relative;top:auto;left:auto;width:100%;height:auto;border-right:none;border-bottom:1px solid var(--gray3);}
   .work-page{margin-left:0;}
 }
-
 
 .desc-veil{
   position:fixed;inset:0;z-index:200;
