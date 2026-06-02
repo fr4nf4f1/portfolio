@@ -158,23 +158,6 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
     overflow-y: auto; 
   }
   
-  .page-nav .pn-label {
-    display: none !important;
-  }
-
-  .page-nav a:first-child div span:first-child::before {
-    content: "← ";
-  }
-
-  .page-nav a:last-child {
-    border: 1px solid var(--gray3);
-    padding: 10px 16px;
-  }
-
-  .page-nav .pn-home:last-child::after {
-    content: " →";
-  }
-  
   .work-page {
     margin-left: 0;
   }
@@ -484,15 +467,10 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
     </div> <!-- Cierra el contenedor interno de los videos -->
 </div> <!-- ACÁ CERRAMOS LA SECCIÓN DEL CARRUSEL (Aplica el espaciado grande) -->
 
-<!-- Ahora la navegación es independiente y se empuja hacia abajo -->
+<!-- Navegación unificada -->
 <div class="page-nav">
   <a href="index.html" class="pn-home">← Índice</a>
-  <a href="work-strokes.html">
-    <div>
-      <span style="font-size:10px;letter-spacing:.2em;display:block">Siguiente sección</span>
-      <span class="pn-label">The Strokes →</span>
-    </div>
-  </a>
+  <a href="work-strokes.html" class="pn-home">Siguiente sección →</a>
 </div>
 
 <!-- FOOTER -->
