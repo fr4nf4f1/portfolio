@@ -143,13 +143,38 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
 .page-nav a:hover{color:var(--white)}
 .pn-label{font-family:'Barlow Condensed',sans-serif;font-size:clamp(18px,2.5vw,28px);
   font-weight:700;text-transform:uppercase;color:var(--white);display:block;margin-top:4px}
-.pn-home{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--text-m);text-decoration:none;
-  border:1px solid var(--gray3);padding:10px 16px;transition:all .3s}
-.pn-home:hover{color:var(--white);border-color:var(--blue)}
-/* Mobile */
-/* Mobile */
+/* Estilo base para los botones (Cajitas) */
+.pn-home {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--text-m);
+  text-decoration: none;
+  border: 1px solid var(--gray3);
+  padding: 10px 16px;
+  transition: all .3s;
+  display: block; /* Para que se vean como bloques */
+}
+
+.pn-home:hover {
+  color: var(--white);
+  border-color: var(--blue);
+}
+
+/* Control de qué texto mostrar */
+.label-mobile { display: none; } /* Oculto en desktop */
+
+
+  /* Mobile */
 @media(max-width:768px){
+  .label-desktop { display: none; } /* Oculto en mobile */
+  .label-mobile { display: block; } /* Visible en mobile */
+  
+  .page-nav {
+    gap: 12px;
+  }
+  
   .work-page {
     margin-left: 0;
   }
@@ -285,7 +310,7 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   <div class="w-hero">
     <div class="ip" data-n="02">
       <div class="ip-in">
-        <div class="w-idx">02 / 02</div>
+        <div class="w-idx">01 / 03</div>
         <span class="w-type">Poster Editorial</span>
         <h2 class="w-title">THE<br><span class="l2">STROKES</span></h2>
         <p class="w-desc">Proyecto de diseño centrado en la anatomía de la letra y la distribución del espacio. Una composición que rinde tributo a la banda. A través de la superposición de planos y el uso de tipografía de palo seco, se busca reinterpretar la identidad visual.</p>
@@ -308,17 +333,14 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
     </div>
   </div>
   
-<div class="page-nav">   
-    <a href="work-cosmos.html">       
-      <div>         
-        <span style="font-size:10px;letter-spacing:.2em;display:block">Sección Anterior</span>         
-        <span class="pn-label">← Identidad</span>
-      </div>
-  <a href="work-embrace.html">
-    <div>
-      <span style="font-size:10px;letter-spacing:.2em;display:block;color:var(--text-m)">Siguiente trabajo</span>
-      <span class="pn-label">Embrace The Future →</span>
-    </div>
+<div class="page-nav">
+  <a href="work-cosmos.html" class="pn-home">
+    <span class="label-desktop">← Identidad</span>
+    <span class="label-mobile">← Sección anterior</span>
+  </a>
+  <a href="work-trex.html" class="pn-home">
+    <span class="label-desktop">Embrace the Future →</span>
+    <span class="label-mobile">Siguiente trabajo →</span>
   </a>
 </div>
 
