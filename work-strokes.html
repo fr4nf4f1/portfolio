@@ -157,9 +157,16 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   display: block; /* Para que se vean como bloques */
 }
 
-.pn-home:hover {
-  color: var(--white);
-  border-color: var(--blue);
+@media(max-width: 768px) {
+  /* Mobile: quitamos la caja y mostramos solo el texto simple */
+  .label-desktop { display: none; }
+  .label-mobile { display: block; color: var(--text-m); }
+  
+  .pn-home {
+    border: none !important; /* Quitamos la caja */
+    padding: 16px 0 !important; /* Ajustamos espacio */
+    border-bottom: 1px solid var(--gray3) !important; /* Línea separadora */
+  }
 }
 
 /* Control de qué texto mostrar */
@@ -169,7 +176,6 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   /* Mobile */
 @media(max-width:768px){
   .label-desktop { display: none; } /* Oculto en mobile */
-  .label-mobile { display: block; } /* Visible en mobile */
   
   .page-nav {
     gap: 12px;
@@ -334,13 +340,19 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   </div>
   
 <div class="page-nav">
+  <!-- Botón Izquierdo -->
   <a href="work-cosmos.html" class="pn-home">
-    <span class="label-desktop">← Identidad</span>
-    <span class="label-mobile">← Sección anterior</span>
+    <span class="label-desktop">SECCIÓN ANTERIOR</span>
+    <span class="label-mobile">← SECCIÓN ANTERIOR</span>
   </a>
+  
+  <!-- Botón Derecho -->
   <a href="work-trex.html" class="pn-home">
-    <span class="label-desktop">Embrace the Future →</span>
-    <span class="label-mobile">Siguiente trabajo →</span>
+    <span class="label-desktop">
+      <span style="font-size:10px;letter-spacing:.2em;display:block">SIGUIENTE TRABAJO</span>
+      <span class="pn-label">EMBRACE THE FUTURE →</span>
+    </span>
+    <span class="label-mobile">SIGUIENTE TRABAJO →</span>
   </a>
 </div>
 
