@@ -143,7 +143,8 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
 .page-nav a:hover{color:var(--white)}
 .pn-label{font-family:'Barlow Condensed',sans-serif;font-size:clamp(18px,2.5vw,28px);
   font-weight:700;text-transform:uppercase;color:var(--white);display:block;margin-top:4px}
-/* Estilo base para los botones (Cajitas) */
+
+  /* Limpiamos el estilo para quitar las cajas en Desktop y Mobile */
 .pn-home {
   font-family: 'Space Mono', monospace;
   font-size: 11px;
@@ -151,10 +152,26 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   text-transform: uppercase;
   color: var(--text-m);
   text-decoration: none;
-  border: 1px solid var(--gray3);
-  padding: 10px 16px;
-  transition: all .3s;
-  display: block; /* Para que se vean como bloques */
+  transition: color .3s;
+  display: block;
+  border: none !important; /* QUITA LA CAJA */
+  padding: 0 !important;   /* QUITA EL RELLENO DE CAJA */
+}
+
+.pn-home:hover {
+  color: var(--white);
+}
+
+/* Manejo de textos visibles */
+.label-mobile { display: none; }
+
+@media(max-width: 768px) {
+  .label-desktop { display: none; }
+  .label-mobile { 
+    display: block; 
+    border-bottom: 1px solid var(--gray3); 
+    padding: 20px 0; 
+  }
 }
 
 @media(max-width: 768px) {
