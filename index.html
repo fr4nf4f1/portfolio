@@ -110,12 +110,11 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   
 /* CONTACT */
 #contact {
-  /* Añadimos 120px de padding abajo para que el footer no pise las redes */
-  padding: clamp(80px,12vw,160px) clamp(16px,6vw,100px) 120px clamp(16px,6vw,100px); 
+  /* Le damos un padding inferior fijo de 140px para darle aire a las redes y alojar el footer */
+  padding: clamp(80px,12vw,160px) clamp(16px,6vw,100px) 140px clamp(16px,6vw,100px); 
   border-top: 1px solid var(--gray3);
   position: relative;
   overflow: hidden;
-  min-height: 100svh; /* Obliga a la sección a ocupar todo el alto de la pantalla, empujando el footer */
 }
 #contact::before{content:'CONTACT';position:absolute;bottom:-.15em;left:-.05em;
   font-family:'Barlow Condensed',sans-serif;font-size:clamp(100px,18vw,240px);font-weight:900;
