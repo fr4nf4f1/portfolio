@@ -192,6 +192,16 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
     </div>
   </div>
 
+<style>
+  /* Ocultamos la flechita extra en PC, y el título grande en Celular */
+  .flecha-celu { display: none; }
+  @media(max-width: 768px) {
+    .titulo-escritorio { display: none !important; }
+    .flecha-celu { display: inline !important; }
+    .pn-free .sub { font-size: 11px !important; margin-bottom: 0 !important; }
+  }
+</style>
+
 <div class="page-nav">
   <a href="work-strokes.html" class="pn-btn">
     <div class="pn-box">← TRABAJO ANTERIOR</div>
@@ -199,9 +209,9 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   
   <a href="work-whatfuture.html" class="pn-btn">
     <div class="pn-free">
-      <span class="title titulo-escritorio">TRABAJO SIGUIENTE →</span>
+      <span class="sub">TRABAJO SIGUIENTE <span class="flecha-celu">→</span></span>
       
-      <span class="texto-celu">TRABAJO SIGUIENTE →</span>
+      <span class="title titulo-escritorio">What About Future →</span>
     </div>
   </a>
 </div>
