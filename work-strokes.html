@@ -18,11 +18,14 @@ html{scroll-behavior:smooth;background:var(--black)}
 body{font-family:'Barlow',sans-serif;color:var(--white);overflow-x:hidden}
 #progress{position:fixed;top:0;left:0;right:0;height:2px;z-index:999;background:var(--gray3)}
 #pf{height:100%;width:0%;background:linear-gradient(to right,var(--blue),var(--cyan));transition:width .1s linear}
+
+/* 1. NAVEGACIÓN PRINCIPAL (HEADER) */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:500;
   padding:20px clamp(16px,6vw,100px);
   display:flex;align-items:center;justify-content:space-between;
   transition:background .4s;
+  background: var(--black); /* Fondo sólido para que no transparente */
 }
 nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(26,86,255,.12)}
 .nav-logo{
@@ -34,7 +37,7 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
 .nav-links{display:flex;gap:clamp(16px,3vw,32px);list-style:none}
 .nav-links a{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-m);text-decoration:none;transition:color .2s}
 .nav-links a:hover,.nav-links a.active{color:var(--white)}
-@media(max-width:600px){.nav-links{gap:16px}.nav-links a{font-size:10px}}
+
 .sec-label{
   font-family:'Space Mono',monospace;font-size:11px;
   letter-spacing:.3em;color:var(--blue);text-transform:uppercase;
@@ -49,20 +52,22 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   border:1px solid rgba(255,255,255,.06);
 }
 
-
-.work-page {
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  padding-top: 80px;
-  margin-left: clamp(280px, 38%, 480px); /* Esto empuja el contenido derecho */
+/* 2. ESTRUCTURA DE LA PÁGINA DEL PROYECTO */
+.work-page{
+  min-height:100svh;
+  display:flex;
+  flex-direction:column;
+  padding-top:80px;
+  margin-left:clamp(280px,38%,480px); /* Deja espacio al panel izquierdo */
 }
 .w-hero{margin-left:0;display:flex;align-items:flex-start;min-height:calc(100svh - 80px);border-bottom:1px solid var(--gray3)}
+
+/* PANEL IZQUIERDO (FIJO EN DESKTOP) */
 .ip{
   width:clamp(280px,38%,480px);flex-shrink:0;
   position:fixed;top:80px;left:0;
   height:calc(100svh - 80px);
-  overflow:hidden;
+  overflow-y:auto; 
   display:flex;flex-direction:column;justify-content:center;
   padding:clamp(40px,5vw,80px) clamp(20px,3vw,56px);
   background:var(--gray);border-right:1px solid var(--gray3);
@@ -91,6 +96,8 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   font-style:italic;border-left:2px solid var(--blue-d);padding-left:14px}
 .inspo-ref-img {display: block; margin-top: 14px; width: 100%; height: auto; object-fit: contain;
   object-position: top; opacity: .75; border: 1px solid rgba(255,255,255,.08)}
+
+/* PANEL DERECHO (IMÁGENES) */
 .wp{flex:1;position:relative;overflow:hidden;background:var(--black);
   display:flex;align-items:center;justify-content:center;padding:clamp(20px,3vw,48px)}
 .c-tl{position:absolute;top:14px;left:14px;width:22px;height:22px;
@@ -100,39 +107,53 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
 .pdiv{position:absolute;top:0;bottom:0;left:0;width:1px;
   background:linear-gradient(to bottom,transparent,var(--blue),transparent);opacity:.35;z-index:5}
 .wp img{max-width:100%;max-height:80svh;object-fit:contain;display:block}
-.wp-grid{width:100%;height:100%;display:grid;gap:16px;align-items:center}
-.wp-grid.c3{grid-template-columns:repeat(3,1fr)}
-.wp-grid.c2{grid-template-columns:repeat(2,1fr)}
-.wp-grid img{width:100%;max-height:75svh;object-fit:contain}
-/* Sección etiquetas: frente + dorso en pares */
-.label-pair-section{
-  padding:clamp(60px,8vw,120px) clamp(16px,6vw,100px);
-  border-bottom:1px solid var(--gray3);
+
+/* 3. EFECTO "VELO" DE ENTRADA */
+.desc-veil{
+  position:fixed;inset:0;
+  z-index:9999; /* Mayor al nav para que no se superponga */
+  background:rgba(6,6,8,.93);
+  display:flex;align-items:center;justify-content:center;
+  padding:clamp(16px,6vw,100px);
+  transition:opacity .6s ease,visibility .6s;
 }
-.label-pair-section h3{
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:clamp(28px,4vw,48px);font-weight:900;text-transform:uppercase;
-  color:var(--white);margin-bottom:4px;
+.desc-veil.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.dv-bg{
+  position:absolute;inset:0;background-size:cover;background-position:center;
+  opacity:.07;filter:saturate(.2);z-index:0;
 }
-.label-pair-section .sub{
-  font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;
-  color:var(--text-m);text-transform:uppercase;margin-bottom:clamp(28px,4vw,48px);
+.dv-content{position:relative;z-index:2}
+.dv-tag{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.3em;
+  color:var(--blue);text-transform:uppercase;margin-bottom:14px}
+.dv-title{font-family:'Barlow Condensed',sans-serif;
+  font-size:clamp(36px,6vw,72px);font-weight:900;text-transform:uppercase;
+  line-height:.9;color:var(--white);margin-bottom:20px}
+.dv-title .l2{-webkit-text-stroke:1px rgba(240,240,240,.4);color:transparent}
+.dv-text{font-size:clamp(13px,1.3vw,15px);line-height:1.8;color:rgba(200,200,230,.8);margin-bottom:28px}
+.dv-btn{
+  display:inline-flex;align-items:center;gap:12px;
+  font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--white);
+  background:var(--blue);border:none;padding:14px 28px;cursor:pointer;transition:background .3s;
 }
-.label-pair{
-  display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,2vw,32px);
-  align-items:start;margin-bottom:clamp(40px,5vw,80px);
+.dv-btn:hover{background:var(--blue-l)}
+
+.dv-inner-strokes{
+  max-width:680px;width:100%;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.12);
+  backdrop-filter:blur(8px);
+  padding:clamp(28px,4vw,52px);
+  position:relative;
+  display:grid;grid-template-columns:1fr auto;gap:28px;align-items:start;
 }
-.label-pair:last-child{margin-bottom:0}
-.label-pair img{width:100%;object-fit:contain;display:block}
-.label-col-title{
-  font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.25em;
-  text-transform:uppercase;color:rgba(26,86,255,.5);margin-bottom:10px;
-}
-@media(max-width:640px){
-  .label-pair{grid-template-columns:1fr}
-}
-/* Nav entre páginas */
-/* --- NAVEGACIÓN UNIFICADA --- */
+.dv-album img{width:clamp(90px,12vw,140px);display:block;
+  border:1px solid rgba(255,255,255,.1);opacity:.85}
+.dv-album-label{font-family:'Space Mono',monospace;font-size:9px;
+  letter-spacing:.15em;color:rgba(112,112,160,.6);text-transform:uppercase;
+  margin-top:8px;text-align:center}
+
+/* 4. NAVEGACIÓN INFERIOR (PAGINACIÓN) */
 .page-nav {
   display: flex;
   align-items: center;
@@ -194,8 +215,36 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
 .only-mobile { display: none; }
 .only-desktop { display: block; }
 
-/* COMPORTAMIENTO EN CELULARES */
+/* 5. RESPONSIVE (MOBILE) */
 @media(max-width: 768px) {
+  /* Reseteo del layout principal */
+  .work-page { margin-left: 0; }
+  .w-hero { flex-direction: column; min-height: auto; }
+  
+  /* Panel izquierdo pasa arriba */
+  .ip {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--gray3);
+    padding: 40px 20px;
+  }
+  .ip img, .inspo-ref-img {
+    max-height: 220px; width: auto; max-width: 100%;
+    object-fit: contain; margin: 14px auto 0 auto; display: block;
+  }
+  
+  /* Panel derecho pasa abajo */
+  .wp { width: 100%; min-height: auto; padding: 40px 16px; display: block !important; }
+  .wp img { width: 100% !important; height: auto !important; max-height: 60svh !important; object-fit: contain; }
+  
+  /* Velo en mobile */
+  .dv-inner-strokes { grid-template-columns: 1fr; }
+
+  /* Navegación Inferior en Mobile */
   .page-nav {
     flex-direction: column;
     align-items: stretch;
@@ -212,117 +261,7 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
     padding: 20px 0;
     border-bottom: 1px solid var(--gray3);
   }
-}  
-  .work-page {
-    margin-left: 0;
-  }
-  
-  /* 1. Cambiamos la dirección a columna para que el trabajo baje */
-  .w-hero {
-    flex-direction: column;
-    min-height: auto;
-  }
-
-.ip {
-  width: clamp(280px, 38%, 480px);
-  flex-shrink: 0;
-  position: sticky; /* Cambiamos fixed por sticky: se queda pegado al hacer scroll pero respeta el contenido */
-  top: 80px;
-  height: calc(100svh - 80px);
-  overflow-y: auto; /* Permite scroll si el texto es largo */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: clamp(40px, 5vw, 80px) clamp(20px, 3vw, 56px);
-  background: var(--gray);
-  border-right: 1px solid var(--gray3);
-  z-index: 10;
 }
-
-/* 2. Achicamos la imagen de referencia dentro de la presentación */
-  .ip img, .inspo-ref-img {
-    max-height: 220px;
-    width: auto;
-    max-width: 100%;
-    object-fit: contain;
-    margin: 14px auto 0 auto; /* ACÁ ESTÁ LA MAGIA: 'auto' a los costados la centra */
-    display: block;
-  }
-
-  /* 3. Hacemos que el panel del trabajo ocupe todo el ancho justo debajo */
-  .wp {
-    width: 100%;
-    min-height: auto;
-    padding: 40px 16px;
-    display: block !important;
-  }
-
-  /* 4. Si las imágenes del trabajo están en grilla, las ordenamos hacia abajo */
-  .wp-grid {
-    grid-template-columns: 1fr !important;
-    gap: 30px;
-  }
-
-  .wp img {
-    width: 100% !important;
-    height: auto !important;
-    max-height: 60svh !important;
-    object-fit: contain;
-  }
-}
-
-
-.desc-veil {
-  position: fixed;
-  inset: 0;
-  z-index: 9999; /* Aumentamos la prioridad para tapar el nav */
-  background: rgba(6,6,8,.93);
-  display: flex;
-}
-.desc-veil.hidden{opacity:0;visibility:hidden;pointer-events:none}
-.dv-inner{
-  max-width:600px;width:100%;
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.12);
-  backdrop-filter:blur(8px);
-  padding:clamp(28px,4vw,52px);
-  position:relative;
-}
-.dv-bg{
-  position:absolute;inset:0;background-size:cover;background-position:center;
-  opacity:.07;filter:saturate(.2);z-index:0;
-}
-.dv-content{position:relative;z-index:2}
-.dv-tag{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.3em;
-  color:var(--blue);text-transform:uppercase;margin-bottom:14px}
-.dv-title{font-family:'Barlow Condensed',sans-serif;
-  font-size:clamp(36px,6vw,72px);font-weight:900;text-transform:uppercase;
-  line-height:.9;color:var(--white);margin-bottom:20px}
-.dv-title .l2{-webkit-text-stroke:1px rgba(240,240,240,.4);color:transparent}
-.dv-text{font-size:clamp(13px,1.3vw,15px);line-height:1.8;color:rgba(200,200,230,.8);margin-bottom:28px}
-.dv-btn{
-  display:inline-flex;align-items:center;gap:12px;
-  font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--white);
-  background:var(--blue);border:none;padding:14px 28px;cursor:pointer;transition:background .3s;
-}
-.dv-btn:hover{background:var(--blue-l)}
-
-.dv-inner-strokes{
-  max-width:680px;width:100%;
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.12);
-  backdrop-filter:blur(8px);
-  padding:clamp(28px,4vw,52px);
-  position:relative;
-  display:grid;grid-template-columns:1fr auto;gap:28px;align-items:start;
-}
-@media(max-width:600px){.dv-inner-strokes{grid-template-columns:1fr}}
-.dv-album img{width:clamp(90px,12vw,140px);display:block;
-  border:1px solid rgba(255,255,255,.1);opacity:.85}
-.dv-album-label{font-family:'Space Mono',monospace;font-size:9px;
-  letter-spacing:.15em;color:rgba(112,112,160,.6);text-transform:uppercase;
-  margin-top:8px;text-align:center}
 </style>
 </head>
 <body>
@@ -379,7 +318,7 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
 <div class="page-nav">
   <!-- Botón Izquierdo -->
   <a href="work-cosmos.html" class="pn-btn">
-    <!-- Visible en PC (Con caja y flecha) -->
+    <!-- Visible en PC (Con caja) -->
     <div class="pn-box only-desktop">← Sección Anterior</div>
     <!-- Visible en Celular (Sin caja, línea gris abajo) -->
     <div class="only-mobile">← Sección Anterior</div>
@@ -387,7 +326,7 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   
   <!-- Botón Derecho -->
   <a href="work-trex.html" class="pn-btn">
-    <!-- Visible en PC (Sin caja, título grande) -->
+    <!-- Visible en PC (Sin caja, título The Strokes gigante) -->
     <div class="pn-free only-desktop">
       <span class="sub">Siguiente trabajo</span>
       <span class="title">Embrace The Future →</span>
