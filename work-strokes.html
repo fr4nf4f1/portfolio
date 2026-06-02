@@ -231,9 +231,26 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
     object-fit: contain; margin: 14px auto 0 auto; display: block;
   }
   
-  /* Panel derecho pasa abajo */
-  .wp { width: 100%; min-height: auto; padding: 40px 16px; display: block !important; }
-  .wp img { width: 100% !important; height: auto !important; max-height: 60svh !important; object-fit: contain; }
+/* PANEL DERECHO (IMÁGENES A PANTALLA COMPLETA) */
+.wp {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background: var(--black);
+  padding: 0; /* 1. Le sacamos el relleno para que no haya márgenes negros */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ... acá quedan .c-tl, .c-br y .pdiv intactos ... */
+
+.wp img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 2. Obliga a la imagen a llenar todo el recuadro, igual que en Cosmos */
+  display: block;
+}
   
   /* Velo en mobile */
   .dv-inner-strokes { grid-template-columns: 1fr; }
