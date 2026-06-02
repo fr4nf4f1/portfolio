@@ -125,8 +125,19 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   display:flex;align-items:center;gap:10px;transition:all .3s}
 .ct-link:hover{color:var(--white);border-color:var(--blue);background:rgba(26,86,255,.06)}
 .ct-link span{color:var(--blue)}
-.ft{display:flex;justify-content:space-between;align-items:center;
-  flex-wrap:wrap;gap:12px;border-top:1px solid var(--gray3);padding-top:24px}
+/* Este es el nuevo estilo del footer */
+.ft-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top: 1px solid var(--gray3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 24px clamp(16px, 6vw, 100px);
+}
 .ft-c{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.15em;color:rgba(112,112,160,.35)}
 
 #hero{
@@ -294,8 +305,8 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
 
 <section id="contact" style="border-top:1px solid var(--gray3);">
   
-  <!-- FILA PRINCIPAL: dos columnas desktop, una columna mobile -->
-  <div id="contact-grid" style="display:grid;grid-template-columns:1fr 1fr;">
+<!-- FILA PRINCIPAL: ajustamos las proporciones para empujar a la izquierda -->
+  <div id="contact-grid" style="display:grid;grid-template-columns:0.8fr 1.2fr;">
 
     <!-- COLUMNA IZQUIERDA -->
     <div style="padding:clamp(48px,6vw,80px) 0px;display:flex;flex-direction:column;justify-content:center;">
@@ -306,8 +317,8 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
       </p>
     </div>
 
-    <!-- COLUMNA DERECHA: redes 2x2 en desktop, 2x2 en mobile -->
-    <div id="redes-grid" style="display:flex;flex-direction:row;align-items:center;justify-content:flex-start;padding:0 clamp(16px,6vw,100px) 0 0;border-left:none;gap:clamp(24px,3vw,48px)">
+    <!-- COLUMNA DERECHA: Redes Sociales (Más separadas y flex-wrap) -->
+    <div id="redes-grid" style="display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:flex-start;padding:0;border-left:none;gap:clamp(40px,5vw,80px)">
       <a href="mailto:franfafian71@gmail.com" style="font-family:'Space Mono',monospace;font-size:clamp(11px,1vw,13px);letter-spacing:.15em;color:var(--text-m);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .3s;" onmouseover="this.style.color='#f0f0f0'" onmouseout="this.style.color='#7070a0'"><span style="color:var(--blue)">✉</span> franfafian71@gmail.com</a>
       <a href="https://www.linkedin.com/in/franciscofafian/" target="_blank" style="font-family:'Space Mono',monospace;font-size:clamp(11px,1vw,13px);letter-spacing:.15em;color:var(--text-m);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .3s;" onmouseover="this.style.color='#f0f0f0'" onmouseout="this.style.color='#7070a0'"><span style="color:var(--blue)">in</span> LinkedIn</a>
       <a href="https://www.instagram.com/franfafian_/" target="_blank" style="font-family:'Space Mono',monospace;font-size:clamp(11px,1vw,13px);letter-spacing:.15em;color:var(--text-m);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .3s;" onmouseover="this.style.color='#f0f0f0'" onmouseout="this.style.color='#7070a0'"><span style="color:var(--blue)">@</span> Instagram</a>
@@ -316,8 +327,8 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
 
   </div>
 
-  <!-- FOOTER -->
-  <div style="display:flex;justify-content:space-between;padding:20px clamp(16px,4vw,48px);flex-wrap:wrap;gap:8px;">
+<!-- FOOTER -->
+  <div class="ft-bar">
     <span class="ft-c">© 2025 Francisco Fafian — Portfolio</span>
     <span class="ft-c">Buenos Aires, Argentina</span>
   </div>
