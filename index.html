@@ -154,11 +154,19 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   #hero{flex-direction:column;justify-content:center;padding-top:120px}
   .h-photo-wrap{width:min(340px,85vw);}
   #contact-grid{grid-template-columns:1fr !important;}
-  #contact-grid > div:first-child{border-right:none !important;border-bottom:1px solid var(--gray3);}
-  #redes-grid{
-    display:grid !important;
-    grid-template-columns:1fr 1fr !important;
-    gap:clamp(24px,4vw,40px) !important;}
+/* 2. SACAR LA LÍNEA GRIS (eliminamos el border-bottom) */
+  #contact-grid > div:first-child {
+    border-right: none !important;
+    border-bottom: none !important; 
+  }
+
+  /* 1. MÁS ESPACIO ENTRE FILAS DE REDES MANTENIENDO 2x2 */
+  #redes-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    row-gap: 56px !important; /* Aumenta el espacio vertical entre arriba y abajo */
+    column-gap: 16px !important; /* Mantiene la separación horizontal */
+  }
 }
 /* Ajustes para celulares pequeños */
 @media(max-width: 600px){
