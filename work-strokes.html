@@ -52,23 +52,38 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   border:1px solid rgba(255,255,255,.06);
 }
 
-/* 2. ESTRUCTURA DE LA PÁGINA DEL PROYECTO */
-.work-page{
-  min-height:100svh;
-  display:flex;
-  flex-direction:column;
-  padding-top:80px;
+/* 2. ESTRUCTURA DE LA PÁGINA DEL PROYECTO (Idéntico a Cosmos) */
+.work-page {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 80px;
+  margin-left: clamp(280px, 38%, 480px); /* Esto empuja el panel derecho a su lugar */
 }
-.w-hero{display:flex;align-items:stretch;min-height:calc(100svh - 80px);border-bottom:1px solid var(--gray3)}
+.w-hero {
+  margin-left: 0;
+  display: flex;
+  align-items: flex-start;
+  min-height: calc(100svh - 80px);
+  border-bottom: 1px solid var(--gray3);
+}
 
-/* PANEL IZQUIERDO (FLUJO NORMAL, SE DESLIZA CON LA PÁGINA) */
-.ip{
-  width:clamp(280px,38%,480px);
-  flex-shrink:0;
-  display:flex;flex-direction:column;justify-content:center;
-  padding:clamp(40px,5vw,80px) clamp(20px,3vw,56px);
-  background:var(--gray);border-right:1px solid var(--gray3);
-  z-index:10;
+/* PANEL IZQUIERDO (FIJO EN DESKTOP) */
+.ip {
+  width: clamp(280px, 38%, 480px);
+  flex-shrink: 0;
+  position: fixed; /* Lo volvemos a anclar a la izquierda */
+  top: 80px;
+  left: 0;
+  height: calc(100svh - 80px);
+  overflow: hidden; /* Sin barra de deslizamiento */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(40px, 5vw, 80px) clamp(20px, 3vw, 56px);
+  background: var(--gray);
+  border-right: 1px solid var(--gray3);
+  z-index: 10;
 }
 .ip::before{
   content:attr(data-n);position:absolute;bottom:-.1em;left:-.05em;
@@ -94,16 +109,30 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
 .inspo-ref-img {display: block; margin-top: 14px; width: 100%; height: auto; object-fit: contain;
   object-position: top; opacity: .75; border: 1px solid rgba(255,255,255,.08)}
 
-/* PANEL DERECHO (IMÁGENES) */
-.wp{flex:1;position:relative;overflow:hidden;background:var(--black);
-  display:flex;align-items:center;justify-content:center;padding:clamp(20px,3vw,48px)}
+/* PANEL DERECHO (OCUPA TODO EL ALTO Y ANCHO RESTANTE) */
+.wp {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(20px, 3vw, 48px); /* Devolvemos el margen interno */
+  min-height: calc(100svh - 80px); /* Esto obliga al panel a ocupar toda la pantalla */
+}
 .c-tl{position:absolute;top:14px;left:14px;width:22px;height:22px;
   border-top:1px solid var(--blue);border-left:1px solid var(--blue);z-index:3;pointer-events:none}
 .c-br{position:absolute;bottom:14px;right:14px;width:22px;height:22px;
   border-bottom:1px solid var(--blue);border-right:1px solid var(--blue);z-index:3;pointer-events:none}
 .pdiv{position:absolute;top:0;bottom:0;left:0;width:1px;
   background:linear-gradient(to bottom,transparent,var(--blue),transparent);opacity:.35;z-index:5}
-.wp img{max-width:100%;max-height:80svh;object-fit:contain;display:block}
+.wp img {
+  max-width: 100%;
+  max-height: 80svh; /* La imagen vuelve a estar contenida y proporcionada */
+  object-fit: contain;
+  display: block;
+}
 
 /* 3. EFECTO "VELO" DE ENTRADA */
 .desc-veil{
@@ -215,17 +244,17 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
 
 /* 5. RESPONSIVE (MOBILE) */
 @media(max-width: 768px) {
-  /* Reseteo del layout principal */
+/* Reseteo del layout principal para Celular */
+  .work-page { margin-left: 0; }
   .w-hero { flex-direction: column; min-height: auto; }
   
-  /* Panel izquierdo pasa arriba y se adapta al contenido */
+/* El panel izquierdo vuelve al flujo normal */
   .ip {
+    position: relative;
+    top: auto;
+    left: auto;
     width: 100%;
     height: auto;
-    border-right: none;
-    border-bottom: 1px solid var(--gray3);
-    padding: 40px 20px;
-  }
   .ip img, .inspo-ref-img {
     max-height: 220px; width: auto; max-width: 100%;
     object-fit: contain; margin: 14px auto 0 auto; display: block;
