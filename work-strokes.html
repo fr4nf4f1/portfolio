@@ -132,10 +132,15 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   .label-pair{grid-template-columns:1fr}
 }
 /* Nav entre páginas */
-.page-nav{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:clamp(32px,4vw,56px) clamp(16px,6vw,100px);
-  border-top:1px solid var(--gray3);flex-wrap:wrap;gap:16px;
+/* --- NAVEGACIÓN UNIFICADA --- */
+.page-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(32px, 4vw, 56px) clamp(16px, 6vw, 100px);
+  border-top: 1px solid var(--gray3);
+  flex-wrap: wrap;
+  gap: 16px;
 }
 .page-nav a{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;
   text-transform:uppercase;color:var(--text-m);text-decoration:none;
@@ -144,7 +149,7 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
 .pn-label{font-family:'Barlow Condensed',sans-serif;font-size:clamp(18px,2.5vw,28px);
   font-weight:700;text-transform:uppercase;color:var(--white);display:block;margin-top:4px}
 
-  /* Limpiamos el estilo para quitar las cajas en Desktop y Mobile */
+  /* Texto limpio para desktop */
 .pn-home {
   font-family: 'Space Mono', monospace;
   font-size: 11px;
@@ -154,10 +159,7 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   text-decoration: none;
   transition: color .3s;
   display: block;
-  border: none !important; /* QUITA LA CAJA */
-  padding: 0 !important;   /* QUITA EL RELLENO DE CAJA */
 }
-
 .pn-home:hover {
   color: var(--white);
 }
@@ -165,26 +167,17 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
 /* Manejo de textos visibles */
 .label-mobile { display: none; }
 
+/* AJUSTES MOBILE */
 @media(max-width: 768px) {
+  .page-nav { flex-direction: column; align-items: stretch; padding: 20px 16px; }
   .label-desktop { display: none; }
   .label-mobile { 
     display: block; 
-    border-bottom: 1px solid var(--gray3); 
     padding: 20px 0; 
+    border-bottom: 1px solid var(--gray3); 
+    color: var(--text-m); 
   }
-}
-
-@media(max-width: 768px) {
-  /* Mobile: quitamos la caja y mostramos solo el texto simple */
-  .label-desktop { display: none; }
-  .label-mobile { display: block; color: var(--text-m); }
-  
-  .pn-home {
-    border: none !important; /* Quitamos la caja */
-    padding: 16px 0 !important; /* Ajustamos espacio */
-    border-bottom: 1px solid var(--gray3) !important; /* Línea separadora */
-  }
-}
+  .pn-home { border: none !important; }
 
 /* Control de qué texto mostrar */
 .label-mobile { display: none; } /* Oculto en desktop */
@@ -359,15 +352,15 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
 <div class="page-nav">
   <!-- Botón Izquierdo -->
   <a href="work-cosmos.html" class="pn-home">
-    <span class="label-desktop">SECCIÓN ANTERIOR</span>
+    <span class="label-desktop">← SECCIÓN ANTERIOR</span>
     <span class="label-mobile">← SECCIÓN ANTERIOR</span>
   </a>
   
   <!-- Botón Derecho -->
   <a href="work-trex.html" class="pn-home">
-    <span class="label-desktop">
-      <span style="font-size:10px;letter-spacing:.2em;display:block">SIGUIENTE TRABAJO</span>
-      <span class="pn-label">EMBRACE THE FUTURE →</span>
+    <span class="label-desktop" style="text-align: right;">
+      <span style="font-size:10px;letter-spacing:.2em;display:block; color:var(--text-m);">SIGUIENTE TRABAJO</span>
+      <span style="font-size:clamp(18px,2.5vw,28px);font-weight:700;display:block; color:var(--white);">EMBRACE THE FUTURE →</span>
     </span>
     <span class="label-mobile">SIGUIENTE TRABAJO →</span>
   </a>
