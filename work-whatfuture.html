@@ -5,7 +5,36 @@
 <title>What About Future — Francisco Fafian</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,900;1,900&family=Barlow:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
+/* Clases exclusivas a prueba de fallos */
+  .nav-escritorio { display: flex; width: 100%; justify-content: space-between; align-items: center; }
+  .nav-celular { display: none; }
 
+  /* Estilo exacto de la caja gris que veníamos usando */
+  .btn-caja-gris {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--text-m);
+    border: 1px solid var(--gray3);
+    padding: 10px 16px;
+    text-decoration: none;
+    transition: all .3s;
+  }
+  .btn-caja-gris:hover {
+    color: var(--white);
+    border-color: var(--blue);
+  }
+
+@media (max-width: 768px) {
+    /* En celular, apagamos la PC y prendemos el móvil */
+    .nav-escritorio { display: none !important; }
+    .nav-celular { display: block !important; padding: 24px 16px !important; }
+    
+    /* Le matamos el padding al contenedor padre para que quede pegado al borde */
+    #navegacion-proyectos { padding: 0 !important; } 
+  }
+  
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --blue:#1a56ff;--blue-l:#4d7fff;--blue-d:#0a2ecc;
@@ -195,19 +224,29 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
     </div>
   </div>
 
-<div class="page-nav">
-  <a href="work-embrace.html">
-    <div>
-      <span style="font-size:10px;letter-spacing:.2em;display:block;color:var(--text-m)">Trabajo anterior</span>
-      <span class="pn-label">← Embrace The Future</span>
+<div id="navegacion-proyectos" class="page-nav">
+  
+  <div class="nav-escritorio">
+    
+    <a href="work-embrace.html" style="text-decoration:none; display:block;">
+      <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;display:block;color:var(--text-m);text-transform:uppercase;margin-bottom:4px;">Trabajo anterior</span>
+      <span class="pn-label" style="margin-top:0;">← Embrace The Future</span>
+    </a>
+    
+    <a href="work-trex.html" class="btn-caja-gris">
+      Siguiente sección →
+    </a>
+    
+  </div>
+
+  <div class="nav-celular">
+    
+    <a href="work-embrace.html" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-m);text-decoration:none; display:block;">
+      ← Trabajo anterior
+    </a>
+    
     </div>
-  </a>
-  <a href="work-trex.html">
-    <div>
-      <span style="font-size:10px;letter-spacing:.2em;display:block;color:var(--text-m)">Siguiente sección</span>
-      <span class="pn-label">Diseño de APP →</span>
-    </div>
-  </a>
+
 </div>
   
 <div class="ft-bar">
