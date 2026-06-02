@@ -132,57 +132,87 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   .label-pair{grid-template-columns:1fr}
 }
 /* Nav entre páginas */
-/* 1. Fondo sólido para el nav (soluciona la superposición) */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
-  padding: 20px clamp(16px,6vw,100px);
-  display: flex; align-items: center; justify-content: space-between;
-  transition: background .4s;
-  background: var(--black); 
-}
-  
-/* 2. Navegación limpia y unificada */
+/* --- NAVEGACIÓN UNIFICADA --- */
 .page-nav {
-  display: flex; align-items: center; justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: clamp(32px, 4vw, 56px) clamp(16px, 6vw, 100px);
   border-top: 1px solid var(--gray3);
-  flex-wrap: wrap; gap: 16px;
+  flex-wrap: wrap;
+  gap: 16px;
 }
-.page-nav a{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--text-m);text-decoration:none;
-  display:flex;align-items:center;gap:10px;transition:color .3s}
-.page-nav a:hover{color:var(--white)}
-.pn-label{font-family:'Barlow Condensed',sans-serif;font-size:clamp(18px,2.5vw,28px);
-  font-weight:700;text-transform:uppercase;color:var(--white);display:block;margin-top:4px}
 
-/* Botón base sin caja */
-.pn-home {
-  font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .2em;
-  text-transform: uppercase; color: var(--text-m);
-  text-decoration: none; display: block;
+.pn-btn {
+  text-decoration: none;
+  display: block;
+}
+
+/* CAJA GRIS IZQUIERDA (Solo Desktop) */
+.pn-box {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--text-m);
+  border: 1px solid var(--gray3);
+  padding: 10px 16px;
   transition: all .3s;
 }
-.pn-home:hover { color: var(--white); }
-
-/* Estilo de "Caja" solo para Desktop en el botón izquierdo */
-@media(min-width: 769px) {
-  .pn-home.caja-estilo { border: 1px solid var(--gray3); padding: 10px 16px; }
-  .pn-home.caja-estilo:hover { border-color: var(--blue); }
+.pn-box:hover {
+  color: var(--white);
+  border-color: var(--blue);
 }
 
-/* Lógica de textos Desktop vs Mobile */
-.label-mobile { display: none; }
+/* TEXTO LIBRE DERECHO (Solo Desktop) */
+.pn-free {
+  text-align: right;
+}
+.pn-free .sub {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--text-m);
+  display: block;
+  margin-bottom: 4px;
+}
+.pn-free .title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(18px, 2.5vw, 28px);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--white);
+  display: block;
+  transition: color .3s;
+}
+.pn-btn:hover .pn-free .title {
+  color: var(--blue);
+}
+
+/* VISIBILIDAD DE DISPOSITIVOS */
+.only-mobile { display: none; }
+.only-desktop { display: block; }
+
+/* COMPORTAMIENTO EN CELULARES */
 @media(max-width: 768px) {
-  .label-desktop { display: none !important; }
-  .label-mobile { display: block !important; padding: 20px 0; border-bottom: 1px solid var(--gray3); }
-  .page-nav { flex-direction: column; align-items: stretch; }
-  .pn-home { border: none !important; }
-}
-  
   .page-nav {
-    gap: 12px;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0 16px;
   }
-  
+  .only-desktop { display: none !important; }
+  .only-mobile { 
+    display: block !important; 
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--text-m);
+    padding: 20px 0;
+    border-bottom: 1px solid var(--gray3);
+  }
+}  
   .work-page {
     margin-left: 0;
   }
@@ -242,12 +272,12 @@ nav {
 }
 
 
-.desc-veil{
-  position:fixed;inset:0;z-index:200;
-  background:rgba(6,6,8,.93);
-  display:flex;align-items:center;justify-content:center;
-  padding:clamp(16px,6vw,100px);
-  transition:opacity .6s ease,visibility .6s;
+.desc-veil {
+  position: fixed;
+  inset: 0;
+  z-index: 9999; /* Aumentamos la prioridad para tapar el nav */
+  background: rgba(6,6,8,.93);
+  display: flex;
 }
 .desc-veil.hidden{opacity:0;visibility:hidden;pointer-events:none}
 .dv-inner{
@@ -347,19 +377,23 @@ nav {
   </div>
   
 <div class="page-nav">
-  <!-- Izquierda: con caja en desktop -->
-  <a href="work-cosmos.html" class="pn-home caja-estilo">
-    <span class="label-desktop">← SECCIÓN ANTERIOR</span>
-    <span class="label-mobile">← SECCIÓN ANTERIOR</span>
+  <!-- Botón Izquierdo -->
+  <a href="work-cosmos.html" class="pn-btn">
+    <!-- Visible en PC (Con caja y flecha) -->
+    <div class="pn-box only-desktop">← Sección Anterior</div>
+    <!-- Visible en Celular (Sin caja, línea gris abajo) -->
+    <div class="only-mobile">← Sección Anterior</div>
   </a>
   
-  <!-- Derecha: sin caja, estilo título grande -->
-  <a href="work-trex.html" class="pn-home">
-    <span class="label-desktop" style="text-align: right;">
-      <span style="font-size:10px;letter-spacing:.2em;display:block; color:var(--text-m);">SIGUIENTE TRABAJO</span>
-      <span style="font-size:clamp(18px,2.5vw,28px);font-weight:700;display:block; color:var(--white); font-family:'Barlow Condensed',sans-serif;">EMBRACE THE FUTURE →</span>
-    </span>
-    <span class="label-mobile">SIGUIENTE TRABAJO →</span>
+  <!-- Botón Derecho -->
+  <a href="work-trex.html" class="pn-btn">
+    <!-- Visible en PC (Sin caja, título grande) -->
+    <div class="pn-free only-desktop">
+      <span class="sub">Siguiente trabajo</span>
+      <span class="title">Embrace The Future →</span>
+    </div>
+    <!-- Visible en Celular (Sin caja, línea gris abajo) -->
+    <div class="only-mobile" style="text-align: right;">Siguiente trabajo →</div>
   </a>
 </div>
 
