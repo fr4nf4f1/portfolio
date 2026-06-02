@@ -5,11 +5,12 @@
 <title>What About Future — Francisco Fafian</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,900;1,900&family=Barlow:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-/* Clases exclusivas a prueba de fallos */
+
+  /* Clases exclusivas a prueba de fallos */
   .nav-escritorio { display: flex; width: 100%; justify-content: space-between; align-items: center; }
   .nav-celular { display: none; }
 
-  /* Estilo exacto de la caja gris */
+  /* Estilo exacto de la caja gris - Ajustado para que no se estire */
   .btn-caja-gris {
     font-family: 'Space Mono', monospace;
     font-size: 11px;
@@ -20,7 +21,7 @@
     padding: 10px 16px;
     text-decoration: none;
     transition: all .3s;
-    display: inline-block; /* Esto evita que la caja se deforme */
+    display: inline-flex; /* Esto hace que la caja se ajuste al contenido */
   }
   .btn-caja-gris:hover {
     color: var(--white);
@@ -222,28 +223,34 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
     </div>
   </div>
 
-<div id="navegacion-proyectos" class="page-nav">  
-  <div class="nav-escritorio">    
-    <div style="flex: 1;">
-      <a href="work-embrace.html" style="text-decoration:none; display:inline-block;">
-        <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;display:block;color:var(--text-m);text-transform:uppercase;margin-bottom:4px;">Trabajo anterior</span>
-        <span style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(18px,2.5vw,28px);font-weight:700;color:var(--white);text-transform:uppercase;display:block;margin-top:0;">← Embrace The Future</span>
-      </a>
-    </div>    
-    <div style="flex: 1; text-align: right;">
-      <a href="work-trex.html" class="btn-caja-gris">
-        Siguiente sección →
-      </a>
-    </div>    
+<div id="navegacion-proyectos" class="page-nav">
+  
+  <!-- ====== VISTA COMPUTADORA ====== -->
+  <div class="nav-escritorio">
+    
+    <!-- Izquierda -->
+    <a href="work-embrace.html" style="text-decoration:none; display:block;">
+      <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;display:block;color:var(--text-m);text-transform:uppercase;margin-bottom:4px;">Trabajo anterior</span>
+      <span class="pn-label" style="margin-top:0;">← Embrace The Future</span>
+    </a>
+    
+    <!-- Derecha: Ahora con display inline-flex, se va a ajustar al texto -->
+    <a href="work-trex.html" class="btn-caja-gris">
+      Siguiente sección →
+    </a>
+    
   </div>
-  <div class="nav-celular">    
+
+  <!-- ====== VISTA CELULAR ====== -->
+  <div class="nav-celular">
     <a href="work-embrace.html" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-m);text-decoration:none;">
       ← Trabajo anterior
-    </a>    
+    </a>
     <a href="work-trex.html" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-m);text-decoration:none; text-align:right;">
       Siguiente sección →
-    </a>    
+    </a>
   </div>
+
 </div>
   
 <div class="ft-bar">
