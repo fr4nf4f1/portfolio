@@ -109,7 +109,6 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
 /* Sección etiquetas: frente + dorso en pares */
 .label-pair-section{
   padding:clamp(60px,8vw,120px) clamp(16px,6vw,100px);
-  border-bottom:1px solid var(--gray3);
 }
 .label-pair-section h3{
   font-family:'Barlow Condensed',sans-serif;
@@ -475,23 +474,27 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
         Orión
       </div>
 
-      <div id="swipe-hint" class="swipe-hint-mobile" style="display:none;text-align:center;
+<div id="swipe-hint" class="swipe-hint-mobile" style="display:none;text-align:center;
         font-family:'Space Mono',monospace;font-size:9px;
         letter-spacing:.2em;text-transform:uppercase;color:rgba(26,86,255,.4);margin-top:6px;
         transition:opacity 1s;">← deslizá →
       </div>
       
-    </div>  <div class="page-nav">
-    <a href="index.html" class="pn-home">← Índice</a>
-    <a href="work-strokes.html">
-      <div>
-        <span style="font-size:10px;letter-spacing:.2em;display:block">Siguiente trabajo</span>
-        <span class="pn-label">The Strokes →</span>
-      </div>
-    </a>
-  </div>
+    </div> <!-- Cierra el contenedor interno de los videos -->
+</div> <!-- ACÁ CERRAMOS LA SECCIÓN DEL CARRUSEL (Aplica el espaciado grande) -->
+
+<!-- Ahora la navegación es independiente y se empuja hacia abajo -->
+<div class="page-nav">
+  <a href="index.html" class="pn-home">← Índice</a>
+  <a href="work-strokes.html">
+    <div>
+      <span style="font-size:10px;letter-spacing:.2em;display:block">Siguiente trabajo</span>
+      <span class="pn-label">The Strokes →</span>
+    </div>
+  </a>
 </div>
 
+<!-- FOOTER -->
 <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;border-top:1px solid #1e1e2e;padding:24px clamp(16px,6vw,100px);margin-top:0;">
   <span style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.15em;color:rgba(112,112,160,.35)">© 2025 Francisco Fafian — Portfolio</span>
   <span style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.15em;color:rgba(112,112,160,.35)">Buenos Aires, Argentina</span>
