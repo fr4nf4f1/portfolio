@@ -25,7 +25,7 @@ nav{
   padding:20px clamp(16px,6vw,100px);
   display:flex;align-items:center;justify-content:space-between;
   transition:background .4s;
-  background: var(--black); /* Fondo sólido para que no transparente */
+  background: var(--black);
 }
 nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(26,86,255,.12)}
 .nav-logo{
@@ -58,16 +58,13 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   display:flex;
   flex-direction:column;
   padding-top:80px;
-  margin-left:clamp(280px,38%,480px); /* Deja espacio al panel izquierdo */
 }
-.w-hero{margin-left:0;display:flex;align-items:flex-start;min-height:calc(100svh - 80px);border-bottom:1px solid var(--gray3)}
+.w-hero{display:flex;align-items:stretch;min-height:calc(100svh - 80px);border-bottom:1px solid var(--gray3)}
 
-/* PANEL IZQUIERDO (FIJO EN DESKTOP) */
+/* PANEL IZQUIERDO (FLUJO NORMAL, SE DESLIZA CON LA PÁGINA) */
 .ip{
-  width:clamp(280px,38%,480px);flex-shrink:0;
-  position:fixed;top:80px;left:0;
-  height:calc(100svh - 80px);
-  overflow-y:auto; 
+  width:clamp(280px,38%,480px);
+  flex-shrink:0;
   display:flex;flex-direction:column;justify-content:center;
   padding:clamp(40px,5vw,80px) clamp(20px,3vw,56px);
   background:var(--gray);border-right:1px solid var(--gray3);
@@ -111,7 +108,7 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
 /* 3. EFECTO "VELO" DE ENTRADA */
 .desc-veil{
   position:fixed;inset:0;
-  z-index:9999; /* Mayor al nav para que no se superponga */
+  z-index:9999;
   background:rgba(6,6,8,.93);
   display:flex;align-items:center;justify-content:center;
   padding:clamp(16px,6vw,100px);
@@ -180,7 +177,7 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   padding: 10px 16px;
   transition: all .3s;
 }
-.pn-box:hover {
+.pn-btn:hover .pn-box {
   color: var(--white);
   border-color: var(--blue);
 }
@@ -204,10 +201,10 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   font-size: clamp(18px, 2.5vw, 28px);
   font-weight: 700;
   text-transform: uppercase;
-  color: var(--white);
+  color: var(--white); /* Siempre blanco, no transiciona color */
   display: block;
 }
-/* 1. Iluminar "Siguiente Trabajo" en blanco al hacer hover */
+/* Iluminar "SIGUIENTE TRABAJO" en blanco al hacer hover, The Strokes queda igual */
 .pn-btn:hover .pn-free .sub {
   color: var(--white);
 }
@@ -216,39 +213,18 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
 .only-mobile { display: none; }
 .only-desktop { display: block; }
 
-/* COMPORTAMIENTO EN CELULARES */
+/* 5. RESPONSIVE (MOBILE) */
 @media(max-width: 768px) {
-  /* 2. Botones uno al lado del otro en Mobile */
-  .page-nav {
-    flex-direction: row; 
-    align-items: center;
-    justify-content: space-between;
-    padding: 30px 16px;
-    flex-wrap: nowrap;
-  }
-  .only-desktop { display: none !important; }
-  .only-mobile { 
-    display: block !important; 
-    font-family: 'Space Mono', monospace;
-    font-size: 11px;
-    letter-spacing: .2em;
-    text-transform: uppercase;
-    color: var(--text-m);
-    padding: 0; /* Sin relleno extra */
-    border: none; /* Sin líneas grises */
-  }
+  /* Reseteo del layout principal */
+  .w-hero { flex-direction: column; min-height: auto; }
   
-/* Ajuste natural del panel para que baje con el contenido en mobile */
+  /* Panel izquierdo pasa arriba y se adapta al contenido */
   .ip {
-    position: relative;
-    top: auto;
-    left: auto;
     width: 100%;
     height: auto;
     border-right: none;
     border-bottom: 1px solid var(--gray3);
     padding: 40px 20px;
-    overflow: visible;
   }
   .ip img, .inspo-ref-img {
     max-height: 220px; width: auto; max-width: 100%;
@@ -262,28 +238,24 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   /* Velo en mobile */
   .dv-inner-strokes { grid-template-columns: 1fr; }
 
-/* NAVEGACIÓN INFERIOR */
-.page-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: clamp(32px, 4vw, 56px) clamp(16px, 6vw, 100px);
-  border-top: 1px solid var(--gray3);
-  flex-wrap: wrap;
-  gap: 16px;
-}
+  /* Navegación Inferior en Mobile: Lado a lado sin líneas */
+  .page-nav {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 16px;
+  }
   .only-desktop { display: none !important; }
   .only-mobile { 
     display: block !important; 
     font-family: 'Space Mono', monospace;
-    font-size: 11px;
-    letter-spacing: .2em;
+    font-size: 10px;
+    letter-spacing: .15em;
     text-transform: uppercase;
     color: var(--text-m);
-    padding: 20px 0;
-    border-bottom: 1px solid var(--gray3);
   }
 }
+  
 </style>
 </head>
 <body>
