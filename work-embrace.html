@@ -203,27 +203,34 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
 </style>
 
 <div class="page-nav">
-  <!-- Botón Izquierdo -->
-  <a href="work-strokes.html">
-    <!-- Visible en Desktop -->
-    <div class="bloque-escritorio">
-      <span style="font-size:10px;letter-spacing:.2em;display:block;color:var(--text-m)">Trabajo anterior</span>
-      <span class="pn-label">← The Strokes</span>
-    </div>
-    <!-- Visible en Mobile -->
-    <div class="texto-solo-celu">← trabajo anterior</div>
+  
+  <!-- ====== LADO IZQUIERDO ====== -->
+  
+  <!-- Visible SOLO en Computadora -->
+  <a href="work-strokes.html" class="vista-pc" style="text-decoration: none;">
+    <span style="font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: .2em; display: block; color: var(--text-m); text-transform: uppercase; margin-bottom: 4px;">Trabajo anterior</span>
+    <span style="font-family: 'Barlow Condensed', sans-serif; font-size: clamp(18px, 2.5vw, 28px); font-weight: 700; text-transform: uppercase; color: var(--white); display: block;">← The Strokes</span>
   </a>
   
-  <!-- Botón Derecho -->
-  <a href="work-whatfuture.html">
-    <!-- Visible en Desktop -->
-    <div class="bloque-escritorio" style="text-align: right;">
-      <span style="font-size:10px;letter-spacing:.2em;display:block;color:var(--text-m)">Siguiente Trabajo</span>
-      <span class="pn-label">What About Future →</span>
-    </div>
-    <!-- Visible en Mobile -->
-    <div class="texto-solo-celu" style="text-align: right;">siguiente trabajo →</div>
+  <!-- Visible SOLO en Celular -->
+  <a href="work-strokes.html" class="vista-celular" style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--text-m); text-decoration: none;">
+    ← Trabajo anterior
   </a>
+
+
+  <!-- ====== LADO DERECHO ====== -->
+  
+  <!-- Visible SOLO en Computadora -->
+  <a href="work-whatfuture.html" class="vista-pc" style="text-decoration: none; text-align: right;">
+    <span style="font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: .2em; display: block; color: var(--text-m); text-transform: uppercase; margin-bottom: 4px;">Siguiente Trabajo</span>
+    <span style="font-family: 'Barlow Condensed', sans-serif; font-size: clamp(18px, 2.5vw, 28px); font-weight: 700; text-transform: uppercase; color: var(--white); display: block;">What About Future →</span>
+  </a>
+
+  <!-- Visible SOLO en Celular -->
+  <a href="work-whatfuture.html" class="vista-celular" style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--text-m); text-decoration: none; text-align: right;">
+    Siguiente Trabajo →
+  </a>
+
 </div>
 
 <script>
