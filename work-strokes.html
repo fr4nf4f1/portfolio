@@ -50,12 +50,12 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
 }
 
 
-.work-page{
-  min-height:100svh;
-  display:flex;
-  flex-direction:column;
-  padding-top:80px;
-  margin-left:clamp(280px,38%,480px);
+.work-page {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 80px;
+  margin-left: clamp(280px, 38%, 480px); /* Esto empuja el contenido derecho */
 }
 .w-hero{margin-left:0;display:flex;align-items:flex-start;min-height:calc(100svh - 80px);border-bottom:1px solid var(--gray3)}
 .ip{
@@ -200,16 +200,21 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
     min-height: auto;
   }
 
-  .ip {
-    position: relative;
-    top: auto;
-    left: auto;
-    width: 100%;
-    height: auto;
-    border-right: none;
-    border-bottom: 1px solid var(--gray3);
-    padding: 40px 20px;
-  }
+.ip {
+  width: clamp(280px, 38%, 480px);
+  flex-shrink: 0;
+  position: sticky; /* Cambiamos fixed por sticky: se queda pegado al hacer scroll pero respeta el contenido */
+  top: 80px;
+  height: calc(100svh - 80px);
+  overflow-y: auto; /* Permite scroll si el texto es largo */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(40px, 5vw, 80px) clamp(20px, 3vw, 56px);
+  background: var(--gray);
+  border-right: 1px solid var(--gray3);
+  z-index: 10;
+}
 
 /* 2. Achicamos la imagen de referencia dentro de la presentación */
   .ip img, .inspo-ref-img {
