@@ -169,7 +169,7 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   display: block;
 }
 
-/* CAJA GRIS IZQUIERDA (Solo Desktop) */
+/* CAJA IZQUIERDA DESKTOP */
 .pn-box {
   font-family: 'Space Mono', monospace;
   font-size: 11px;
@@ -197,6 +197,7 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   color: var(--text-m);
   display: block;
   margin-bottom: 4px;
+  transition: color .3s;
 }
 .pn-free .title {
   font-family: 'Barlow Condensed', sans-serif;
@@ -205,23 +206,39 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   text-transform: uppercase;
   color: var(--white);
   display: block;
-  transition: color .3s;
 }
-.pn-btn:hover .pn-free .title {
-  color: var(--blue);
+/* 1. Iluminar "Siguiente Trabajo" en blanco al hacer hover */
+.pn-btn:hover .pn-free .sub {
+  color: var(--white);
 }
 
 /* VISIBILIDAD DE DISPOSITIVOS */
 .only-mobile { display: none; }
 .only-desktop { display: block; }
 
-/* 5. RESPONSIVE (MOBILE) */
+/* COMPORTAMIENTO EN CELULARES */
 @media(max-width: 768px) {
-  /* Reseteo del layout principal */
-  .work-page { margin-left: 0; }
-  .w-hero { flex-direction: column; min-height: auto; }
+  /* 2. Botones uno al lado del otro en Mobile */
+  .page-nav {
+    flex-direction: row; 
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 16px;
+    flex-wrap: nowrap;
+  }
+  .only-desktop { display: none !important; }
+  .only-mobile { 
+    display: block !important; 
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--text-m);
+    padding: 0; /* Sin relleno extra */
+    border: none; /* Sin líneas grises */
+  }
   
-  /* Panel izquierdo pasa arriba */
+/* Ajuste natural del panel para que baje con el contenido en mobile */
   .ip {
     position: relative;
     top: auto;
@@ -231,6 +248,7 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
     border-right: none;
     border-bottom: 1px solid var(--gray3);
     padding: 40px 20px;
+    overflow: visible;
   }
   .ip img, .inspo-ref-img {
     max-height: 220px; width: auto; max-width: 100%;
@@ -244,12 +262,16 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
   /* Velo en mobile */
   .dv-inner-strokes { grid-template-columns: 1fr; }
 
-  /* Navegación Inferior en Mobile */
-  .page-nav {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 0 16px;
-  }
+/* NAVEGACIÓN INFERIOR */
+.page-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(32px, 4vw, 56px) clamp(16px, 6vw, 100px);
+  border-top: 1px solid var(--gray3);
+  flex-wrap: wrap;
+  gap: 16px;
+}
   .only-desktop { display: none !important; }
   .only-mobile { 
     display: block !important; 
@@ -318,21 +340,17 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
 <div class="page-nav">
   <!-- Botón Izquierdo -->
   <a href="work-cosmos.html" class="pn-btn">
-    <!-- Visible en PC (Con caja) -->
-    <div class="pn-box only-desktop">← Sección Anterior</div>
-    <!-- Visible en Celular (Sin caja, línea gris abajo) -->
-    <div class="only-mobile">← Sección Anterior</div>
+    <div class="pn-box only-desktop">← SECCIÓN ANTERIOR</div>
+    <div class="only-mobile">← SECCIÓN ANTERIOR</div>
   </a>
   
   <!-- Botón Derecho -->
   <a href="work-trex.html" class="pn-btn">
-    <!-- Visible en PC (Sin caja, título The Strokes gigante) -->
     <div class="pn-free only-desktop">
-      <span class="sub">Siguiente trabajo</span>
-      <span class="title">Embrace The Future →</span>
+      <span class="sub">SIGUIENTE TRABAJO</span>
+      <span class="title">EMBRACE THE FUTURE →</span>
     </div>
-    <!-- Visible en Celular (Sin caja, línea gris abajo) -->
-    <div class="only-mobile" style="text-align: right;">Siguiente trabajo →</div>
+    <div class="only-mobile">SIGUIENTE TRABAJO →</div>
   </a>
 </div>
 
