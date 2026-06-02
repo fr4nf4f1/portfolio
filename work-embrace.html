@@ -5,7 +5,18 @@
 <title>Embrace The Future — Francisco Fafian</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,900;1,900&family=Barlow:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
+/* Clases exclusivas que no dependen del resto de tu CSS */
+  .nav-escritorio { display: flex; width: 100%; justify-content: space-between; }
+  .nav-celular { display: none; }
 
+  @media (max-width: 768px) {
+    /* En celular, apagamos la PC y prendemos el móvil */
+    .nav-escritorio { display: none !important; }
+    .nav-celular { display: flex !important; width: 100%; justify-content: space-between; padding: 24px 16px !important; }
+    
+    /* Le matamos el padding al contenedor padre para que quede pegado a los bordes */
+    #navegacion-proyectos { padding: 0 !important; } 
+  }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --blue:#1a56ff;--blue-l:#4d7fff;--blue-d:#0a2ecc;
@@ -201,41 +212,28 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
     .pn-free .sub { font-size: 11px !important; margin-bottom: 0 !important; }
   }
 </style>
-
-<div class="page-nav" style="padding: 0 !important; display: flex; flex-direction: column;">
-
+<div id="navegacion-proyectos" class="page-nav">
+  
   <!-- ====== VISTA COMPUTADORA ====== -->
-  <!-- Ocultamos este bloque entero en celulares usando la clase only-desktop que ya tenés en tu CSS -->
-  <div class="only-desktop" style="display: flex; width: 100%; justify-content: space-between; padding: clamp(32px,4vw,56px) clamp(16px,6vw,100px);">
-    
-    <!-- Botón Izquierdo PC -->
-    <a href="work-strokes.html" style="text-decoration: none;">
-      <span style="font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: .2em; display: block; color: var(--text-m); text-transform: uppercase; margin-bottom: 4px;">Trabajo anterior</span>
-      <span class="pn-label" style="margin-top: 0;">← The Strokes</span>
+  <div class="nav-escritorio">
+    <a href="work-strokes.html" style="text-decoration:none;">
+      <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;display:block;color:var(--text-m);text-transform:uppercase;margin-bottom:4px;">Trabajo anterior</span>
+      <span class="pn-label" style="margin-top:0;">← THE STROKES</span>
     </a>
-    
-    <!-- Botón Derecho PC -->
-    <a href="work-whatfuture.html" style="text-decoration: none; text-align: right;">
-      <span style="font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: .2em; display: block; color: var(--text-m); text-transform: uppercase; margin-bottom: 4px;">Siguiente Trabajo</span>
-      <span class="pn-label" style="margin-top: 0;">What About Future →</span>
+    <a href="work-whatfuture.html" style="text-decoration:none;text-align:right;">
+      <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;display:block;color:var(--text-m);text-transform:uppercase;margin-bottom:4px;">Siguiente Trabajo</span>
+      <span class="pn-label" style="margin-top:0;">WHAT ABOUT FUTURE →</span>
     </a>
-    
   </div>
 
   <!-- ====== VISTA CELULAR ====== -->
-  <!-- Ocultamos este bloque en PC usando la clase only-mobile que ya tenés en tu CSS -->
-  <div class="only-mobile" style="display: flex; width: 100%; justify-content: space-between; padding: 24px 16px;">
-    
-    <!-- Botón Izquierdo Celular -->
-    <a href="work-strokes.html" style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--text-m); text-decoration: none;">
+  <div class="nav-celular">
+    <a href="work-strokes.html" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-m);text-decoration:none;">
       ← Trabajo anterior
     </a>
-    
-    <!-- Botón Derecho Celular -->
-    <a href="work-whatfuture.html" style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--text-m); text-decoration: none;">
-      Siguiente Trabajo →
+    <a href="work-whatfuture.html" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-m);text-decoration:none;text-align:right;">
+      Siguiente trabajo →
     </a>
-    
   </div>
 
 </div>
