@@ -212,21 +212,24 @@ nav.sc{background:rgba(6,6,8,.92);backdrop-filter:blur(16px);border-bottom:1px s
     .pn-free .sub { font-size: 11px !important; margin-bottom: 0 !important; }
   }
 </style>
-<div id="navegacion-proyectos" class="page-nav">
+
+  <div id="navegacion-proyectos" class="page-nav">
   
   <!-- ====== VISTA COMPUTADORA ====== -->
   <div class="nav-escritorio">
-    <a href="work-strokes.html" style="text-decoration:none;">
+    <!-- Agregamos display: block; para apilar los textos -->
+    <a href="work-strokes.html" style="text-decoration:none; display:block;">
       <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;display:block;color:var(--text-m);text-transform:uppercase;margin-bottom:4px;">Trabajo anterior</span>
       <span class="pn-label" style="margin-top:0;">← THE STROKES</span>
     </a>
-    <a href="work-whatfuture.html" style="text-decoration:none;text-align:right;">
+    
+    <a href="work-whatfuture.html" style="text-decoration:none; text-align:right; display:block;">
       <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;display:block;color:var(--text-m);text-transform:uppercase;margin-bottom:4px;">Siguiente Trabajo</span>
       <span class="pn-label" style="margin-top:0;">WHAT ABOUT FUTURE →</span>
     </a>
   </div>
 
-  <!-- ====== VISTA CELULAR ====== -->
+  <!-- ====== VISTA CELULAR (INTACTA) ====== -->
   <div class="nav-celular">
     <a href="work-strokes.html" style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-m);text-decoration:none;">
       ← Trabajo anterior
